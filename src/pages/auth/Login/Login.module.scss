@@ -1,0 +1,199 @@
+.loginWrapper {
+  height: 120vh;
+  background: #f3f6f8;
+  display: flex;
+  padding-top: 80px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.loginCard {
+  width: 500px;
+  background: #eff8fb;
+  padding: 30px 32px;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #1e293b;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+    outline: none;
+  }
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #64748b;
+}
+
+.primaryBtn {
+  width: 100%;
+  background: #06BCFD;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #24283E;      // target color
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(36, 40, 62, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0 22px;
+  font-size: 15px;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.forgotSection {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.35s ease,
+              margin 0.35s ease;
+  opacity: 0;
+}
+
+.forgotInner {
+  overflow: hidden;
+}
+
+.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin: 14px 0 18px;
+}
+
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #7b8794;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 0.9px;
+  width: 36%;
+  background: #dcdcdc;
+  position: absolute;
+  top: 50%;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.outlineBtn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #24283E;
+    color: #fff;
+    border-color: #24283E;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(36, 40, 62, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+
+.registerText {
+  text-align: center;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+input::placeholder {
+  color: #9aa4b2;   // soft grey
+  opacity: 1;       // Safari me needed hota hai
+}
+@media (max-width: 768px) {
+  .loginWrapper {
+    height: 100vh;
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .loginCard {
+    width: 92%;
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .inputGroup input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .primaryBtn,
+  .outlineBtn {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
