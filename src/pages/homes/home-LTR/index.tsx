@@ -11,7 +11,7 @@ import Faqs from "@/components/homes/home-1/Faqs";
 import Hero from "@/components/homes/home-1/Hero";
 import Process from "@/components/homes/home-1/Process";
 import Services from "@/components/common/Services";
-import Testimonials from "@/components/homes/home-1/Testimonials";
+import GoogleReviews from "@/components/otherPages/GoogleReviews";
 import RtlHandler from "@/components/homes/home-1/RtlHandler";
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
@@ -33,7 +33,7 @@ export default function HomeRtlPage() {
         <Services />
         <Process />
         <CaseStudies />
-        <Testimonials />
+        <GoogleReviews />
         <Faqs />
         <Blogs />
         <Awards />

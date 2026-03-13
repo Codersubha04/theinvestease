@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
 const slides = [
   {
     title: "Invest with Ease.<br />Grow with Confidence.",
@@ -61,9 +62,10 @@ export default function Hero() {
                       ></div>
                       <Link
                         to="/our-services-1"
-                        className="tf-btn style-1 bg-white tf-fade-top fade-item-3"
+                        className="hero-premium-btn tf-fade-top fade-item-3"
                       >
                         <span>{slide.buttonText}</span>
+                        <Send size={18} className="btn-icon" />
                       </Link>
                     </div>
                   </div>

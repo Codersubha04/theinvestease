@@ -63,7 +63,7 @@ export default function Nav() {
           pathname.startsWith("/blogs") ? "current-menu-item" : ""
         }`}
       >
-        <Link to="/blogs" className="item-link">
+        <Link to="/" className="item-link">
           Blogs
         </Link>
       </li>

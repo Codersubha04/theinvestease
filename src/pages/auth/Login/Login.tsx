@@ -1,53 +1,85 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Eye, EyeOff } from "lucide-react";
 import styles from "./Login.module.scss";
-import { useNavigate } from "react-router-dom"; 
+import MetaComponent from "@/components/common/MetaComponent";
 
+const metadata = {
+  title: "Login | InvestEase Research (SEBI RA)",
+  description:
+    "Log in to your InvestEase Research account to access research insights, updates, and client support.",
+};
 
 export default function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [otpMode, setOtpMode] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-
+  const [otpMode] = useState(false);
+  const [otpSent] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [otp, setOtp] = useState("");
   const [showForgot, setShowForgot] = useState(false);
+  const [isLeavingForRegister, setIsLeavingForRegister] = useState(false);
+
+  const handleRegisterRedirect = () => {
+    if (isLeavingForRegister) return;
+    setIsLeavingForRegister(true);
+
+    const goToRegister = () => navigate("/register");
+    const transitionDoc = document as Document & {
+      startViewTransition?: (cb: () => void) => { finished: Promise<void> };
+    };
+
+    if (transitionDoc.startViewTransition) {
+      transitionDoc.startViewTransition(goToRegister);
+      return;
+    }
+
+    window.setTimeout(goToRegister, 190);
+  };
 
   return (
-    <div className={styles.loginWrapper}>
-      <div className={styles.loginCard}>
-        <div className={styles.title}>Login</div>
+    <>
+      <MetaComponent meta={metadata} />
+      <div
+        className={`${styles.loginWrapper} ${isLeavingForRegister ? styles.routeLeaving : ""}`}
+      >
+        <div className={styles.loginCard}>
+          <div className={styles.title}>
+            Login <span>Now</span>
+          </div>
 
-        {/* Email */}
         <div className={styles.inputGroup}>
           <input
             type="email"
-            placeholder="Email..."
+            placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        {/* Password */}
         {!otpMode && (
           <>
             <div className={styles.inputGroup}>
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Password..."
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span
+              <button
+                type="button"
                 className={styles.eyeIcon}
                 onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                👁
-              </span>
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
 
-            <button className={styles.primaryBtn}>Login</button>
+            <button className={styles.primaryBtn}>
+              <span>Login</span>
+              <ArrowRight size={16} className={styles.btnIcon} />
+            </button>
 
             <div className={styles.optionsRow}>
               <label>
@@ -71,14 +103,15 @@ export default function Login() {
               <input type="email" placeholder="Enter your email" />
             </div>
 
-            <button className={styles.primaryBtn}>Send Reset Link</button>
+            <button className={styles.primaryBtn}>
+              <span>Send Reset Link</span>
+              <ArrowRight size={16} className={styles.btnIcon} />
+            </button>
           </div>
         </div>
 
-        {/* Divider */}
         <div className={styles.divider}>OR LOGIN WITH</div>
 
-        {/* OTP */}
         <div className={styles.inputGroup}>
           <input
             type="email"
@@ -89,18 +122,18 @@ export default function Login() {
         </div>
 
         <button className={styles.primaryBtn}>
-          {otpSent ? "Verify OTP" : "Send OTP"}
+          <span>{otpSent ? "Verify OTP" : "Send OTP"}</span>
+          <ArrowRight size={16} className={styles.btnIcon} />
         </button>
 
-        <div className={styles.registerText}>Don't have an account?</div>
+          <div className={styles.registerText}>Don't have an account?</div>
 
-        <button
-          className={styles.outlineBtn}
-          onClick={() => navigate("/register")}
-        >
-          Register Now
-        </button>
+          <button className={styles.outlineBtn} onClick={handleRegisterRedirect}>
+            <span>Register Now</span>
+            <ArrowRight size={16} className={styles.btnIcon} />
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

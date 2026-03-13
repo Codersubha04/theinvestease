@@ -1,37 +1,37 @@
 export const projects = [
   {
     id: 1,
-    title: "Revamping Operations for Higher Efficiency",
-    label: "Operational Improvement",
+    title: "Beginner Portfolio Discipline Program",
+    label: "Investor Education",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30% and driving a 40% increase in annual revenue.",
+      "Research-led onboarding helped new investors build structured allocation habits and avoid emotional decision-making during volatility.",
     imgSrc: "/image/case-studies-item/project-item-1.jpg",
     active: false,
   },
   {
     id: 2,
-    title: "Strategic Growth Plan for Market Expansion",
-    label: "Strategy Development",
+    title: "Swing Setup With Defined Risk Controls",
+    label: "Active Advisory",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30% and driving a 40% increase in annual revenue.",
+      "A disciplined swing framework with clear entry, stop-loss, and review checkpoints improved consistency in trade execution.",
     imgSrc: "/image/case-studies-item/project-item-2.jpg",
     active: true,
   },
   {
     id: 3,
-    title: "Revamping Operations for Higher Efficiency",
-    label: "Operational Improvement",
+    title: "Stock Basket Selection For Long-Term Growth",
+    label: "Stock Basket",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30% and driving a 40% increase in annual revenue.",
+      "Fundamental-first screening and sector balance helped investors create a more resilient long-term equity basket.",
     imgSrc: "/image/case-studies-item/project-item-3.jpg",
     active: false,
   },
   {
     id: 4,
-    title: "Revamping Operations for Higher Efficiency",
-    label: "Operational Improvement",
+    title: "Risk-Managed Investing During Market Stress",
+    label: "Risk Framework",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30% and driving a 40% increase in annual revenue.",
+      "Position sizing, scenario mapping, and review discipline supported better decision quality in uncertain market phases.",
     imgSrc: "/image/case-studies-item/project-item-4.jpg",
     active: false,
   },
@@ -41,34 +41,34 @@ export const caseStudies = [
   {
     id: 5,
     imgSrc: "/image/case-studies-item/case-studies-5.jpg",
-    title: "Revamping Operations for Higher Efficiency",
-    label: "Operational Improvement",
+    title: "Long-Term Portfolio Clarity for New Investors",
+    label: "Investor Education",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30%...",
+      "Structured guidance helped first-time investors build conviction, avoid impulsive trades, and follow a disciplined long-term framework.",
   },
   {
     id: 6,
     imgSrc: "/image/case-studies-item/case-studies-6.jpg",
-    title: "Strategic Growth Plan for Market Expansion",
-    label: "Strategy Development",
+    title: "Swing Opportunity Framework With Defined Risk",
+    label: "Active Advisory",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30%...",
+      "A rule-based swing setup with entry, exit, and risk levels improved execution quality and reduced decision noise.",
   },
   {
     id: 7,
     imgSrc: "/image/case-studies-item/case-studies-7.jpg",
-    title: "Financial Revamp for Sustainable Profitability",
-    label: "Financial Advisory",
+    title: "Research-Led Stock Basket Allocation",
+    label: "Stock Basket",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30%...",
+      "Curated stock baskets based on fundamentals and sector context enabled balanced exposure with long-term consistency.",
   },
   {
     id: 8,
     imgSrc: "/image/case-studies-item/case-studies-8.jpg",
-    title: "Technology Integration for Enhanced Performance",
-    label: "Technology Integration",
+    title: "Risk-First Decision Model for Volatile Markets",
+    label: "Risk Management",
     description:
-      "Our tailored strategy for a tech startup facilitated its entry into new markets, boosting market share by 30%...",
+      "Focus on position sizing, scenario planning, and review discipline supported more stable outcomes in high-volatility phases.",
   },
 ];
 

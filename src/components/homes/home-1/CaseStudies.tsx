@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
-
 import { projects } from "@/data/caseStudies";
 import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "./caseStudies.scss";
 
 export default function CaseStudies() {
   const projectRefs = useRef([]);
   const imageRefs = useRef([]);
 
-  // Clear and reassign refs on re-render
   projectRefs.current = [];
   imageRefs.current = [];
 
@@ -24,13 +23,17 @@ export default function CaseStudies() {
     }
   };
 
+  const setActiveByIndex = (index: number) => {
+    projectRefs.current.forEach((el) => el.classList.remove("active"));
+    imageRefs.current.forEach((el) => el.classList.remove("active"));
+
+    projectRefs.current[index]?.classList.add("active");
+    imageRefs.current[index]?.classList.add("active");
+  };
+
   useEffect(() => {
     const handleInteraction = (index) => () => {
-      projectRefs.current.forEach((el) => el.classList.remove("active"));
-      imageRefs.current.forEach((el) => el.classList.remove("active"));
-
-      projectRefs.current[index]?.classList.add("active");
-      imageRefs.current[index]?.classList.add("active");
+      setActiveByIndex(index);
     };
 
     projectRefs.current.forEach((item, index) => {
@@ -52,7 +55,7 @@ export default function CaseStudies() {
 
   return (
     <section
-      className="section-project h-1 bg-on-suface-container section-one-page"
+      className="section-project h-1 bg-on-suface-container section-one-page home1-case-premium"
       id="project"
     >
       <div className="tf-container">
@@ -60,18 +63,16 @@ export default function CaseStudies() {
           <div className="col-12">
             <div className="heading-section style-color-white text-center">
               <div className="text-anime-wave-1">
-                <a
-                  href="#"
-                  className="tag label text-btn-uppercase color-white"
-                >
-                  Our Featured Projects
-                </a>
+                <span className="tag label text-btn-uppercase color-white case-chip">
+                  InvestEase Results
+                </span>
               </div>
               <h3 className="title-section text-anime-wave-1 mb-12">
-                Success Stories
+                Research-Backed <span>Success Stories</span>
               </h3>
               <div className="sub-title body-2 text-anime-wave-1">
-                Discover how we’ve helped clients achieve remarkable results.
+                Practical outcomes shaped by disciplined research and long-term
+                investing frameworks.
               </div>
             </div>
           </div>
@@ -81,6 +82,19 @@ export default function CaseStudies() {
         <div className="list-case">
           <Swiper
             className="sw-case-studies swiper sw-layout"
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 3200,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={projects.length > 1}
+            onSwiper={(swiper) => {
+              setActiveByIndex(swiper.realIndex ?? 0);
+            }}
+            onSlideChange={(swiper) => {
+              setActiveByIndex(swiper.realIndex ?? 0);
+            }}
             breakpoints={{
               0: { slidesPerView: 1 },
               575: {
@@ -97,15 +111,13 @@ export default function CaseStudies() {
             {projects.map((project, index) => (
               <SwiperSlide className="swiper-slide" key={index}>
                 <div
-                  className={`project-item${project.active ? " active" : ""}`}
+                  className={`project-item case-premium-card${project.active ? " active" : ""}`}
                   ref={addToProjectRefs}
                 >
-                  <Link to={`/case-studies-details`} className="link" />
+                  <span className="link" aria-hidden="true" />
                   <div className="project-content">
                     <h5>
-                      <Link to={`/case-studies-details`} className="name">
-                        {project.title}
-                      </Link>
+                      <span className="name">{project.title}</span>
                     </h5>
                     <div className="text text-btn-uppercase label">
                       {project.label}
@@ -126,7 +138,7 @@ export default function CaseStudies() {
             >
               <img
                 src={project.imgSrc}
-                alt=""
+                alt={project.title}
                 className="lazyload"
                 width={1920}
                 height={634}

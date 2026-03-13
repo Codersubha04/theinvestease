@@ -1,0 +1,321 @@
+#modallogin {
+  .custom-modal {
+    max-width: 620px;
+  }
+
+  .sebi-popup {
+    border: 1px solid rgba(20, 132, 181, 0.22);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(10, 39, 60, 0.24);
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+  }
+
+  .popup-body {
+    padding: 18px 18px 20px;
+  }
+
+  .popup-title {
+    font-family: "Rethink Sans", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: #142236;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .popup-top .left img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid rgba(20, 132, 181, 0.16);
+  }
+
+  .contact-bar {
+    margin-top: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+    display: flex;
+  }
+
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(20, 132, 181, 0.18);
+    background: rgba(20, 132, 181, 0.08);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      transform 0.28s ease,
+      box-shadow 0.28s ease,
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      color 0.28s ease;
+
+    i {
+      font-size: 15px;
+      line-height: 1;
+      color: #ffffff;
+    }
+
+    span {
+      color: #ffffff !important;
+      font-size: 14px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      color: #ffffff;
+      border-color: rgba(20, 132, 181, 0.36);
+      background: linear-gradient(135deg, #1ea7d7, #1484b5);
+      box-shadow: 0 12px 26px rgba(20, 132, 181, 0.26);
+    }
+  }
+
+  .lang-bar {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .lang-bar button {
+    min-height: 44px;
+    min-width: 132px;
+    padding: 0 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(20, 132, 181, 0.22);
+    background: #f4f9fd;
+    color: #223a54;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.28s ease,
+      box-shadow 0.28s ease,
+      border-color 0.28s ease,
+      background-color 0.28s ease,
+      color 0.28s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-25deg);
+      transition: left 0.55s ease;
+    }
+
+    &:hover {
+      color: #ffffff;
+      border-color: rgba(20, 132, 181, 0.58);
+      background: linear-gradient(135deg, #1ea7d7, #1484b5);
+      box-shadow: 0 10px 22px rgba(20, 132, 181, 0.26);
+      transform: translateY(-1px);
+    }
+
+    &:hover::before {
+      left: 130%;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(20, 132, 181, 0.4);
+      outline-offset: 2px;
+    }
+  }
+
+  .lang-bar .active {
+    color: #ffffff;
+    border-color: rgba(20, 132, 181, 0.62);
+    background: linear-gradient(135deg, #1ea7d7, #1484b5);
+    box-shadow: 0 10px 20px rgba(20, 132, 181, 0.22);
+  }
+
+  .fraud-box {
+    margin-top: 10px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 196, 0, 0.26);
+    background: linear-gradient(180deg, #fff9e8 0%, #fff4d2 100%);
+
+    h5 {
+      margin-bottom: 6px;
+      color: #8b5d00;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: #5f4500;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+  }
+
+  .custom-close {
+    opacity: 0.9;
+    border-radius: 10px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #modallogin {
+    .custom-modal {
+      width: min(100% - 20px, 460px);
+      margin: 12px auto;
+    }
+
+    .sebi-popup {
+      border-radius: 16px;
+      box-shadow: 0 16px 34px rgba(8, 35, 54, 0.24);
+      animation: modalMobileIn 0.32s ease both;
+    }
+
+    .popup-body {
+      padding: 12px 10px 14px;
+    }
+
+    .popup-title {
+      font-size: 24px !important;
+      margin-bottom: 8px;
+      text-align: center;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+      line-height: 1.12;
+      padding-right: 20px;
+    }
+
+    .popup-top .left img {
+      border-radius: 12px;
+    }
+
+    .contact-bar {
+      margin-top: 10px;
+      flex-direction: column;
+      gap: 8px;
+
+      &::after {
+        display: none !important;
+      }
+    }
+
+    .contact-item {
+      width: 100%;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 12px;
+      border-radius: 11px;
+      font-size: 13px;
+    }
+
+    .lang-bar {
+      margin-top: 10px;
+      gap: 7px;
+    }
+
+    .lang-bar button {
+      flex: 1;
+      min-height: 36px;
+      padding: 0 10px;
+      font-size: 12px;
+      border-radius: 10px;
+      color: #223a54 !important;
+      background: #f4f9fd;
+
+      &:hover {
+        color: #ffffff !important;
+      }
+    }
+
+    .lang-bar .active {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #1ea7d7, #1484b5);
+      border-color: rgba(20, 132, 181, 0.58);
+    }
+
+    .fraud-box {
+      margin-top: 10px;
+      padding: 11px 11px;
+      border-radius: 10px;
+
+      h5 {
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+    }
+
+    .custom-close {
+      transform: scale(0.84);
+      right: 8px;
+      top: 8px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  #modallogin {
+    .custom-modal {
+      width: min(100% - 14px, 420px);
+    }
+
+    .popup-body {
+      padding: 10px 8px 12px;
+    }
+
+    .popup-title {
+      font-size: 24px !important;
+      letter-spacing: -0.01em;
+      padding-right: 18px;
+    }
+  }
+}
+
+@keyframes modalMobileIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #modallogin {
+    .sebi-popup,
+    .contact-item,
+    .lang-bar button,
+    .custom-close {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

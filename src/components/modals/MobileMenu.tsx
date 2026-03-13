@@ -1,8 +1,44 @@
 import { Link, useLocation } from "react-router-dom";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Send,
+  Youtube,
+} from "lucide-react";
 
 import { serviceLinks, moreLinks } from "@/data/menu";
 
 import type { MenuLink } from "@/types/menuLink";
+import "./mobileMenu.scss";
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61587700070114",
+    icon: Facebook,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@InvestEaseSchool",
+    icon: Youtube,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/investease_research/",
+    icon: Instagram,
+  },
+  {
+    label: "Telegram",
+    href: "https://t.me/InvestEase_Official",
+    icon: Send,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/investease-research/",
+    icon: Linkedin,
+  },
+];
 
 export default function MobileMenu() {
   const { pathname } = useLocation();
@@ -111,7 +147,7 @@ export default function MobileMenu() {
                 pathname.startsWith("/blogs") ? "current-menu-mobile-item" : ""
               }`}
             >
-              <Link to="/blogs">Blogs</Link>
+              <Link to="/">Blogs</Link>
             </li>
             {/* More */}
             <li
@@ -153,60 +189,37 @@ export default function MobileMenu() {
               <Link to="/contact-us">Contact</Link>
             </li>
           </ul>
+          <div className="mobile-menu-cta">
+            <Link to="/login" className="mobile-premium-btn mobile-premium-btn-secondary">
+              <span>Login</span>
+            </Link>
+            <Link to="/contact-us" className="mobile-premium-btn">
+              <span>Get Started</span>
+            </Link>
+          </div>
           <div className="contact-mobile">
             <h6 className="title-contact-mobile">Contact Info</h6>
             <div className="content-contact-moblile">
-              <a href="#">
-                <i className="icon-MapPin" /> 4/82 Seth Bagan Road, Kolkata, West Bengal, India
-              </a>
-            </div>
-            <div className="content-contact-moblile">
-              <a href="#">
+              <a href="mailto:support@investease.in">
                 <i className="icon-Envelope" /> support@investease.in
               </a>
             </div>
             <div className="content-contact-moblile">
-              <a href="#">
+              <a href="tel:+917980561156">
                 <i className="icon-PhoneCall" /> +91-7980561156
               </a>
             </div>
             <div className="content-contact-moblile">
-              <ul className="tf-social style-border radius-50 g-8 style-2 color-on-suface-container">
-                <li className="item">
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-messenger" />
-                    </div>
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-x" />
-                    </div>
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-ig1" />
-                    </div>
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-skype" />
-                    </div>
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-telegram" />
-                    </div>
-                  </a>
-                </li>
+              <ul className="tf-social style-border radius-50 g-8 style-2 color-on-suface-container mobile-social-premium">
+                {socialLinks.map(({ label, href, icon: Icon }) => (
+                  <li className="item" key={label}>
+                    <a href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}>
+                      <div className="icon">
+                        <Icon size={16} strokeWidth={2.1} />
+                      </div>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

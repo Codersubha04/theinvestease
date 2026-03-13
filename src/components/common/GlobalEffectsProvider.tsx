@@ -50,7 +50,7 @@ export default function GlobalEffectsProvider() {
     const initWow = async () => {
       if (!wowRef.current) {
         wowRef.current = new WOW({
-          mobile: false,
+          mobile: true,
         });
         wowRef.current.init();
       } else {
@@ -99,21 +99,6 @@ export default function GlobalEffectsProvider() {
     };
   }, [pathname]);
   useEffect(() => {
-    if (window.innerWidth <= 550) {
-      const animatedTextElements = document.querySelectorAll(
-        ".text-anime-wave, .text-anime-wave-1, .text-anime-wave-2"
-      );
-
-      animatedTextElements.forEach((el) => {
-        const animEl = el as Element & { animation?: gsap.core.Tween };
-        if (animEl.animation) {
-          animEl.animation.progress(1).kill();
-        }
-        gsap.set(animEl, { clearProps: "all" });
-      });
-
-      return;
-    }
 
     // ✅ Animate Wave Text
     const waveElements = document.querySelectorAll(

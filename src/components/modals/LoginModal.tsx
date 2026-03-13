@@ -4,6 +4,7 @@ import { useState } from "react";
 import * as bootstrap from "bootstrap";
 import type { SendEmailEvent } from "@/types/mail-form";
 import PopupImage from "/image/Popup/InvestEasePopUp.png"
+import "./loginModal.scss";
 
 export default function LoginModal() {
   const modalElement = useRef<HTMLDivElement | null>(null);

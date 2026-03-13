@@ -1,0 +1,120 @@
+.case-studies-premium {
+  font-family: "Rethink Sans", sans-serif;
+
+  .case-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(30, 167, 215, 0.25);
+    border-radius: 999px;
+    background: rgba(30, 167, 215, 0.12);
+    color: #0d6f98;
+    letter-spacing: 0.09em;
+  }
+
+  .title-section {
+    color: #142236;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+  }
+
+  .sub-title {
+    color: #50657e;
+  }
+
+  .sw-project-list {
+    padding: 16px 0 26px;
+    background: transparent !important;
+  }
+
+  .case-premium-card {
+    border: 1px solid rgba(20, 132, 181, 0.16);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(10, 64, 88, 0.12);
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+
+    .image::before {
+      background: linear-gradient(
+        180deg,
+        rgba(36, 40, 61, 0) 0%,
+        rgba(15, 26, 54, 0.88) 100%
+      ) !important;
+    }
+
+    .btn-arrow-item {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(18, 44, 73, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(6px);
+      transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .case-studies-content {
+      background: linear-gradient(
+        180deg,
+        rgba(15, 26, 54, 0.05) 0%,
+        rgba(15, 26, 54, 0.62) 100%
+      );
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      transform: translateY(30%);
+
+      .name {
+        font-weight: 700;
+      }
+
+      .text {
+        color: #8fdcff;
+      }
+
+      .desc {
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(20, 132, 181, 0.28);
+      box-shadow: 0 20px 40px rgba(20, 132, 181, 0.2);
+
+      .btn-arrow-item {
+        transform: translateY(-2px);
+        background: #1484b5;
+        border-color: #1484b5;
+      }
+    }
+  }
+
+  .sw-pagination-layout {
+    margin-top: 14px;
+
+    .swiper-pagination-bullet {
+      border-color: rgba(20, 132, 181, 0.5);
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #1484b5;
+
+      &::after {
+        border-color: #1484b5;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .case-studies-premium {
+    .case-premium-card .case-studies-content {
+      transform: translateY(18%);
+    }
+  }
+}

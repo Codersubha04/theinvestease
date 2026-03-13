@@ -1,0 +1,219 @@
+.section-history-premium {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(30, 167, 215, 0.12), transparent 44%),
+    radial-gradient(circle at 85% 84%, rgba(20, 132, 181, 0.14), transparent 42%),
+    #102235;
+
+  .history-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(154, 215, 240, 0.34);
+    background: rgba(30, 167, 215, 0.14);
+    color: #dff6ff !important;
+    letter-spacing: 0.09em;
+  }
+
+  .heading-section .sub-title {
+    color: rgba(231, 244, 255, 0.82);
+  }
+
+  .heading-section .title-section span {
+    color: #9fe6ff;
+  }
+
+  .time-line-item {
+    border-top-color: rgba(196, 225, 242, 0.34);
+
+    &::before {
+      border-color: rgba(196, 225, 242, 0.36);
+      background-color: #102235;
+    }
+
+    &::after {
+      background-color: rgba(196, 225, 242, 0.34);
+    }
+
+    &.active {
+      border-color: #1ea7d7;
+    }
+  }
+
+  .time-line-content {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    .title-content {
+      color: #f3fbff;
+    }
+
+    .desc {
+      color: rgba(233, 244, 253, 0.86);
+    }
+  }
+
+  .time-line-item.active .time-line-content {
+    background: linear-gradient(135deg, #1ea7d7, #1484b5);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .section-history-premium {
+    .heading-section {
+      margin-bottom: 40px !important;
+    }
+
+    .history-chip {
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      padding: 7px 13px;
+    }
+
+    .wg-time-line {
+      .timeline-mobile-stack {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .swiper {
+        overflow: visible;
+      }
+    }
+
+    .time-line-content {
+      height: auto !important;
+      min-height: 240px;
+      padding: 22px 18px;
+      margin: 0 10px;
+      border-radius: 14px;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+
+      .title-content {
+        font-size: 20px;
+        line-height: 1.28;
+      }
+
+      .desc {
+        margin-top: 12px !important;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-history-premium {
+    .tf-container {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .heading-section {
+      margin-bottom: 28px !important;
+
+      .title-section {
+        font-size: clamp(24px, 7vw, 32px);
+        line-height: 1.24;
+      }
+
+      .sub-title {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 34ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .swiper-time-line {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .timeline-mobile-stack {
+      gap: 12px;
+    }
+
+    .time-line-item {
+      padding-top: 30px;
+      animation: historyMobileItemIn 0.45s ease both;
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        top: -9px;
+        border-width: 3px;
+      }
+
+      &::after {
+        height: 30px;
+      }
+    }
+
+    .time-line-content {
+      min-height: 0;
+      margin: 0;
+      padding: 18px 14px;
+
+      .title-content {
+        font-size: 19px;
+      }
+
+      .desc {
+        margin-top: 10px !important;
+        font-size: 13.5px;
+        line-height: 1.66;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-history-premium {
+    .time-line-content {
+      padding: 16px 12px;
+
+      .title-content {
+        font-size: 18px;
+      }
+
+      .desc {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@keyframes historyMobileItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-history-premium {
+    .time-line-item,
+    .time-line-content {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

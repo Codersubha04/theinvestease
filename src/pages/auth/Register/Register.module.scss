@@ -1,144 +1,268 @@
 .wrapper {
-  height: 120vh;
+  min-height: 100dvh;
   background: #f3f6f8;
   display: flex;
-  padding-top: 80px;
   justify-content: center;
-  align-items: center;
-  font-family: "Open Sans", sans-serif;
+  align-items: flex-start;
+  padding: 132px 16px 64px;
+  font-family: "Rethink Sans", sans-serif;
 }
 
 .card {
-  width: 900px;
-  background: #eff8fb;
-  padding: 30px 32px;
+  width: min(920px, 100%);
+  background: linear-gradient(180deg, #eff8fb 0%, #eaf5fa 100%);
+  padding: 28px 30px;
+  margin: 0 auto 18px;
   border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(20, 132, 181, 0.1);
+  box-shadow:
+    0 14px 34px rgba(8, 49, 65, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  animation: registerFadeUp 0.45s ease both;
 }
 
 .title {
   text-align: center;
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 35px;
-  color: #1e293b;
-}
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #142236;
+  letter-spacing: -0.01em;
 
-/* 👇 SAME input style as login */
-.input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  font-size: 16px;
-  background: #fff;
-  outline: none;
-
-  &::placeholder {
-    color: #9aa4b2;
+  span {
+    color: #1388b8;
   }
 }
 
-/* Grid for 2 column */
+.input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d3e3ec;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #fff;
+  color: #1b2e45;
+  outline: none;
+  transition:
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    transform 0.2s ease;
+
+  &::placeholder {
+    color: #8ea0b1;
+  }
+
+  &:focus {
+    border-color: rgba(20, 132, 181, 0.55);
+    box-shadow: 0 0 0 4px rgba(20, 132, 181, 0.12);
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 22px;
+  gap: 16px 18px;
 }
 
 .fullRow {
   grid-column: span 2;
 }
 
+.whatsappLabel,
+.dobLabel {
+  margin: 4px 0 -4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #31485f;
+}
+
+.whatsappLabel {
+  grid-column: 1;
+}
+
+.dobLabel {
+  grid-column: 2;
+  padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .whatsappLabel,
+  .dobLabel {
+    margin-bottom: 6px;
+  }
+}
+
+.phoneWrap {
+  display: flex;
+  gap: 10px;
+  grid-column: 1;
+}
+
+.countryCode {
+  min-width: 74px;
+  background: #fff;
+  border: 1px solid #d3e3ec;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f3a56;
+}
+
+.whatsappInput {
+  flex: 1;
+}
+
 .dobRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 10px;
+  grid-column: 2;
 }
 
-/* 👇 SAME button as login */
 .primaryBtn {
   grid-column: span 2;
   width: 100%;
-  background: #06bcfd;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  color: #fff;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #24283e;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(36, 40, 62, 0.25);
-  }
-}
-
-.bottomText {
-  text-align: center;
-  margin-top: 26px;
-  margin-bottom: 10px;
+  min-height: 48px;
+  border: 1px solid rgba(20, 132, 181, 0.14);
+  border-radius: 12px;
   font-size: 16px;
-}
-
-.outlineBtn {
-  display: block;
-  width: 260px;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  background: #fff;
   font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1ea7d7, #1484b5);
+  box-shadow: 0 14px 30px rgba(16, 119, 161, 0.28);
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
-  margin: 14px auto 0;   
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+  }
 
   &:hover {
-    background: #24283E;
-    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(20, 132, 181, 0.36);
   }
-}
-.labelRow {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  margin: 6px 0 -6px;
-  font-size: 15px;
-  font-weight: 600;
 
-  div:nth-child(2) {
-    padding-left: 10px;
+  &:hover::before {
+    left: 130%;
   }
 }
 
 .bottomDivider {
   width: 60%;
   height: 1px;
-  background: #dcdcdc;
-  margin: 26px auto 18px;
+  background: #d4e3eb;
+  margin: 22px auto 16px;
 }
 
+.bottomText {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #334a61;
+}
 
+.outlineBtn {
+  display: block;
+  width: 260px;
+  min-height: 46px;
+  padding: 0 16px;
+  margin: 10px auto 0;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 132, 181, 0.18);
+  background: #fff;
+  color: #17324d;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
 
-/* Mobile same as login */
-@media (max-width: 768px) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    color: #fff;
+    border-color: rgba(20, 132, 181, 0.35);
+    background: linear-gradient(135deg, #1ea7d7, #1484b5);
+    box-shadow: 0 12px 26px rgba(20, 132, 181, 0.28);
+    transform: translateY(-2px);
+  }
+
+  &:hover::before {
+    left: 130%;
+  }
+}
+
+@media (max-width: 991px) {
   .wrapper {
-    height: 100vh;
-    padding-top: 0;
+    padding-top: 116px;
+    padding-bottom: 56px;
   }
 
   .card {
-    width: 92%;
-    padding: 24px 20px;
+    padding: 24px 22px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 104px 10px 42px;
+    align-items: flex-start;
+  }
+
+  .card {
+    width: 100%;
+    padding: 18px 14px;
+    margin: 0 auto 14px;
+    border-radius: 14px;
+    box-shadow:
+      0 12px 28px rgba(8, 49, 65, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .title {
+    font-size: clamp(24px, 7vw, 30px);
+    margin-bottom: 18px;
   }
 
   .grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .fullRow,
@@ -146,7 +270,82 @@
     grid-column: span 1;
   }
 
+  .input {
+    min-height: 44px;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 11px;
+  }
+
+  .whatsappLabel,
+  .dobLabel {
+    grid-column: span 1;
+    margin: 2px 0 -2px;
+    font-size: 13px;
+    padding-left: 0;
+  }
+
+  .phoneWrap {
+    gap: 8px;
+    grid-column: span 1;
+  }
+
+  .countryCode {
+    min-width: 64px;
+    min-height: 44px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+
   .dobRow {
     grid-template-columns: 1fr;
+    gap: 10px;
+    grid-column: span 1;
+  }
+
+  .primaryBtn {
+    min-height: 44px;
+    font-size: 15px;
+    border-radius: 11px;
+    margin-top: 2px;
+  }
+
+  .bottomDivider {
+    width: 74%;
+    margin: 18px auto 14px;
+  }
+
+  .bottomText {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .outlineBtn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+    border-radius: 11px;
+    margin-top: 6px;
+  }
+}
+
+@keyframes registerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .primaryBtn,
+  .outlineBtn,
+  .input {
+    animation: none !important;
+    transition: none !important;
   }
 }

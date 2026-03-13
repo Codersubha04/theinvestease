@@ -8,7 +8,7 @@ import Features from "@/components/common/Features2";
 import Hero from "@/components/homes/consulting-agency/Hero";
 import Process from "@/components/common/Process";
 import Services from "@/components/common/Services2";
-import Testimonials from "@/components/common/Testimonials";
+import GoogleReviews from "@/components/otherPages/GoogleReviews";
 import Blogs from "@/components/common/Blogs";
 
 import Cta from "@/components/common/Cta";
@@ -33,7 +33,7 @@ export default function ConsultingAgencyPage() {
         <Process />
         <Features />
         <CaseStudies />
-        <Testimonials />
+        <GoogleReviews />
         <Contact />
         <Blogs />
         <Cta />

@@ -1,14 +1,14 @@
 export default function Benefits() {
   return (
     <section
-      className="section-benefit h-1 tf-spacing-3 section-one-page"
+      className="section-benefit h-1 tf-spacing-3 section-one-page home1-benefits-premium"
       id="benefit"
     >
       <div className="tf-container">
         <div className="row">
           <div className="col-12">
-            <div className="box-icon-list">
-              <div className="box-icon">
+            <div className="box-icon-list benefits-scroll-list">
+              <div className="box-icon benefit-card">
                 <div className="icon wow fadeInUp">
                   <i className="icon-tailored" />
                 </div>
@@ -27,7 +27,7 @@ export default function Benefits() {
                   </div>
                 </div>
               </div>
-              <div className="box-icon">
+              <div className="box-icon benefit-card">
                 <div className="icon wow fadeInUp" data-wow-delay=".1s">
                   <i className="icon-investment" />
                 </div>
@@ -45,7 +45,7 @@ export default function Benefits() {
                   </div>
                 </div>
               </div>
-              <div className="box-icon">
+              <div className="box-icon benefit-card">
                 <div className="icon wow fadeInUp" data-wow-delay=".2s">
                   <i className="icon-financial" />
                 </div>
@@ -63,7 +63,7 @@ export default function Benefits() {
                   </div>
                 </div>
               </div>
-              <div className="box-icon">
+              <div className="box-icon benefit-card">
                 <div className="icon wow fadeInUp" data-wow-delay=".3s">
                   <i className="icon-tax" />
                 </div>

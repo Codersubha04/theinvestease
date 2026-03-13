@@ -47,7 +47,9 @@ export default function ContactMap() {
             <div className="contact-form-box">
               <span className="section-badge">Get In Touch</span>
 
-              <h2>Connect With Our Advisory Team</h2>
+              <h2 className="contact-map-title">
+                Connect With Our <span>Advisory Team</span>
+              </h2>
               <p>
                 Fill out the form below and our research team will respond
                 within 24 hours.

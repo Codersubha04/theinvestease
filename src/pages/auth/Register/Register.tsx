@@ -2,6 +2,13 @@ import styles from "./Register.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Country, State } from "country-state-city";
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Register | InvestEase Research (SEBI RA)",
+  description:
+    "Create your InvestEase Research account to get access to research-driven market insights and investor services.",
+};
 
 export default function Register() {
   const navigate = useNavigate();
@@ -66,9 +73,13 @@ export default function Register() {
   const years = Array.from({ length: 80 }, (_, i) => currentYear - i);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.card}>
-        <div className={styles.title}>Register Now</div>
+    <>
+      <MetaComponent meta={metadata} />
+      <div className={styles.wrapper}>
+        <div className={styles.card}>
+          <div className={styles.title}>
+            Register <span>Now</span>
+          </div>
 
         <div className={styles.grid}>
           <input
@@ -132,95 +143,85 @@ export default function Register() {
             onChange={handleChange}
           />
 
-          <div className={styles.labelRow}>
-            <div>Receive stock alerts on WhatsApp</div>
-            <div className="">Date of Birth (as per PAN)</div>
-          </div>
+          <div className={styles.whatsappBlock}>
+            <div className={styles.whatsappLabel}>Receive stock alerts on WhatsApp</div>
+            <div className={styles.phoneWrap}>
+              <div className={styles.countryCode}>
+                {phoneCode}
+              </div>
 
-          <div style={{ display: "flex", gap: "10px" }}>
-            <div
-              style={{
-                minWidth: "70px",
-                background: "#fff",
-                border: "1px solid #dcdcdc",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: "600",
-              }}
-            >
-              {phoneCode}
+              <input
+                className={`${styles.input} ${styles.whatsappInput}`}
+                placeholder="Whatsapp Number"
+                name="whatsapp"
+                onChange={handleChange}
+              />
             </div>
-
-            <input
-              className={styles.input}
-              style={{ flex: 1 }}
-              placeholder="Whatsapp Number"
-              name="whatsapp"
-              onChange={handleChange}
-            />
           </div>
-          <div className={styles.dobRow}>
-            {/* Day */}
-            <select
-              className={styles.input}
-              name="day"
-              value={form.day}
-              onChange={handleChange}
-            >
-              <option value="">Day</option>
-              {days.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
 
-            {/* Month */}
-            <select
-              className={styles.input}
-              name="month"
-              value={form.month}
-              onChange={handleChange}
-            >
-              <option value="">Month</option>
-              {months.map((m, i) => (
-                <option key={i} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+          <div className={styles.dobBlock}>
+            <div className={styles.dobLabel}>Date of Birth (as per PAN)</div>
+            <div className={styles.dobRow}>
+              {/* Day */}
+              <select
+                className={styles.input}
+                name="day"
+                value={form.day}
+                onChange={handleChange}
+              >
+                <option value="">Day</option>
+                {days.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
 
-            {/* Year */}
-            <select
-              className={styles.input}
-              name="year"
-              value={form.year}
-              onChange={handleChange}
-            >
-              <option value="">Year</option>
-              {years.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
+              {/* Month */}
+              <select
+                className={styles.input}
+                name="month"
+                value={form.month}
+                onChange={handleChange}
+              >
+                <option value="">Month</option>
+                {months.map((m, i) => (
+                  <option key={i} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+
+              {/* Year */}
+              <select
+                className={styles.input}
+                name="year"
+                value={form.year}
+                onChange={handleChange}
+              >
+                <option value="">Year</option>
+                {years.map((y) => (
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <button className={styles.primaryBtn} onClick={handleSubmit}>
             Create Account
           </button>
         </div>
 
-        <div className={styles.bottomDivider}></div>
+          <div className={styles.bottomDivider}></div>
 
-        <div className={styles.bottomText}>Already have an account?</div>
+          <div className={styles.bottomText}>Already have an account?</div>
 
-        <button className={styles.outlineBtn} onClick={() => navigate("/login")}>
-          Login Here
-        </button>
+          <button className={styles.outlineBtn} onClick={() => navigate("/login")}>
+            Login Here
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

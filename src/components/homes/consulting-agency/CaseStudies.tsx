@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { caseStudies } from "@/data/caseStudies";
+import "./caseStudies.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -8,7 +9,7 @@ import { Pagination } from "swiper/modules";
 export default function CaseStudies() {
   return (
     <section
-      className="section-project h-2 bg-surface tf-spacing-8 section-one-page"
+      className="section-project h-2 bg-surface tf-spacing-8 section-one-page case-studies-premium"
       id="project"
     >
       <div className="tf-container position-relative">
@@ -16,15 +17,16 @@ export default function CaseStudies() {
           <div className="col-12">
             <div className="heading-section text-center">
               <div className="text-anime-wave-1">
-                <a href="#" className="tag label text-btn-uppercase bg-white">
-                  Our Featured Projects
-                </a>
+                <span className="tag label text-btn-uppercase bg-white case-chip">
+                  InvestEase Results
+                </span>
               </div>
               <h3 className="title-section text-anime-wave-1 mb-12">
-                Success Stories
+                Research-Backed Success Stories
               </h3>
               <div className="sub-title body-2 text-anime-wave-1">
-                Discover how we’ve helped clients achieve remarkable results.
+                Real outcomes from disciplined equity research, investor
+                education, and long-term market strategy.
               </div>
             </div>
           </div>
@@ -55,23 +57,23 @@ export default function CaseStudies() {
         >
           {caseStudies.map((item, index) => (
             <SwiperSlide className="swiper-slide" key={index}>
-              <div className="case-studies-item style-bg-content hover-img style-2-content">
+              <div className="case-studies-item style-bg-content hover-img style-2-content case-premium-card">
                 <div className="image">
                   <img
                     src={item.imgSrc}
-                    alt=""
+                    alt={item.title}
                     className="lazyload"
                     width={473}
                     height={630}
                   />
-                  <Link to={`/case-studies-details`} className="link" />
+                  <Link to="/case-studies-details" className="link" />
                 </div>
-                <Link to={`/case-studies-details`} className="btn-arrow-item">
+                <Link to="/case-studies-details" className="btn-arrow-item">
                   <i className="icon-arrowRight" />
                 </Link>
                 <div className="case-studies-content">
                   <h5>
-                    <Link to={`/case-studies-details`} className="name">
+                    <Link to="/case-studies-details" className="name">
                       {item.title}
                     </Link>
                   </h5>

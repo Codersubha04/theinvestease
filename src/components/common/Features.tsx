@@ -1,111 +1,65 @@
 import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
+import "./features.scss";
+
+const points = [
+  "SEBI Registered Company - INH000020721",
+  "Client Centric Point of View",
+  "High Accuracy up to - 90%",
+  "Proven Research Methodology",
+  "100% Genuine Customer Support",
+  "7+ Years Experience in Market",
+  "Free Consultation by Our Experts",
+  "Dedicated Relationship Manager",
+];
 
 export default function Features() {
   return (
-    <section className="section-why-choose h-4 tf-spacing-2">
+    <section className="section-why-choose h-4 tf-spacing-2 features-premium-h4">
       <div className="tf-container position-relative">
         <div className="row rg-60 align-items-center">
           <div className="col-lg-6">
-            <div className="section-content">
+            <div className="section-content features-content-panel">
               <div className="heading-section">
                 <div className="text-anime-wave">
-                  <a href="#" className="tag label text-btn-uppercase">
+                  <span className="tag label text-btn-uppercase features-chip">
                     Why Choose us?
-                  </a>
+                  </span>
                 </div>
-                <h3 className="text-anime-wave mb-12">
-                 Why Choose InvestEase <br />
-                  
+                <h3 className="text-anime-wave mb-12 features-title">
+                  Why Choose <span>InvestEase</span>
                 </h3>
-                {/* <div className="sub-title body-2 text-anime-wave">
-                  We offer unparalleled expertise and tailored solutions to
-                  navigate your digital journey. Our team combines deep industry
-                  knowledge with cutting-edge technology to drive transformative
-                  results. Partner with us to experience innovation, efficiency,
-                  and sustainable growth.
-                </div> */}
               </div>
-              <div className="benefit-lists">
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
+
+              <div className="benefit-lists features-list">
+                {points.map((point, index) => (
+                  <div
+                    className="benefit-items text-anime-wave features-list-item"
+                    key={point}
+                    data-wow-delay={`${index * 0.05}s`}
+                  >
+                    <div className="icon">
+                      <i className="icon-checkbox" />
+                    </div>
+                    <div className="title">{point}</div>
                   </div>
-                  <div className="title">
-                    SEBI Registered Company - INH000020721
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    Client Centric Point of View
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    High Accuracy up to – 90%
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    Proven Research Methodology
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    100% Genuine Customer Support
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    7+ Years Experience in Market
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    Free Consultation by Our Experts
-                  </div>
-                </div>
-                <div className="benefit-items text-anime-wave">
-                  <div className="icon">
-                    <i className="icon-checkbox" />
-                  </div>
-                  <div className="title">
-                    Dedicated Relationship Manager
-                  </div>
-                </div>
+                ))}
               </div>
+
               <div className="text-anime-wave">
-                <Link
-                  to={`/contact-us`}
-                  className="tf-btn style-1 bg-on-suface-container"
-                >
-                  <span> Schedule A Consultation</span>
+                <Link to="/contact-us" className="features-cta-btn">
+                  <span>Schedule A Consultation</span>
+                  <Send size={18} className="btn-icon" />
                 </Link>
               </div>
             </div>
           </div>
+
           <div className="col-lg-6">
-            <div className="image tf-animate-4">
+            <div className="image tf-animate-4 features-image-card">
               <img
                 src="/image/section/img-section-why-choose-h2.jpg"
-                alt=""
+                alt="Why Choose InvestEase"
                 className="lazyload"
                 width={615}
                 height={615}

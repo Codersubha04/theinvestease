@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
 
 export default function Process() {
   return (
     <section
-      className="section-process h-1 tf-spacing-2 hover-active-step section-one-page"
+      className="section-process h-1 tf-spacing-2 hover-active-step section-one-page home1-process-premium"
       id="process"
     >
       <div className="tf-container">
@@ -12,20 +13,18 @@ export default function Process() {
             <div className="heading-section style-2 mb-40">
               <div className="left">
                 <div className="text-anime-wave">
-                  <a href="#" className="tag label text-btn-uppercase">
+                  <span className="tag label text-btn-uppercase process-chip">
                     steps to success
-                  </a>
+                  </span>
                 </div>
-                <h3 className="title-section text-anime-wave">
-                  Client Access Pathway
+                <h3 className="title-section text-anime-wave process-title">
+                  Client Access <span>Pathway</span>
                 </h3>
               </div>
               <div className="text-anime-wave-2">
-                <Link
-                  to={`/contact-us`}
-                  className="tf-btn style-1 bg-on-suface-container"
-                >
-                  <span> Schedule A Consultation </span>
+                <Link to={`/contact-us`} className="process-main-cta">
+                  <span>Schedule A Consultation</span>
+                  <Send size={18} className="btn-icon" />
                 </Link>
               </div>
             </div>
@@ -33,7 +32,7 @@ export default function Process() {
         </div>
         <div className="row rg-30">
           <div className="col-lg-3 col-sm-6">
-            <div className="process-item step-hover">
+            <div className="process-item step-hover process-step-card">
               <div className="process-top wow fadeInUp">
                 <div className="icon wow fadeInUp">
                   <svg
@@ -83,7 +82,7 @@ export default function Process() {
             </div>
           </div>
           <div className="col-lg-3 col-sm-6">
-            <div className="process-item step-hover">
+            <div className="process-item step-hover process-step-card">
               <div className="process-top wow fadeInUp" data-wow-delay=".1s">
                 <div className="icon wow fadeInUp" data-wow-delay=".1s">
                   <svg
@@ -164,7 +163,7 @@ export default function Process() {
             </div>
           </div>
           <div className="col-lg-3 col-sm-6">
-            <div className="process-item step-hover">
+            <div className="process-item step-hover process-step-card">
               <div className="process-top wow fadeInUp" data-wow-delay=".2s">
                 <div className="icon wow fadeInUp" data-wow-delay=".2s">
                   <svg
@@ -224,7 +223,7 @@ export default function Process() {
             </div>
           </div>
           <div className="col-lg-3 col-sm-6">
-            <div className="process-item step-hover">
+            <div className="process-item step-hover process-step-card">
               <div className="process-top wow fadeInUp" data-wow-delay=".3s">
                 <div className="icon wow fadeInUp" data-wow-delay=".3s">
                   <svg

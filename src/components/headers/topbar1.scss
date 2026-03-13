@@ -1,0 +1,176 @@
+.top-bar.top-bar-premium {
+  background: linear-gradient(135deg, #1ea7d7 0%, #1484b5 100%);
+  background-size: 140% 140%;
+  border-bottom: 1px solid rgba(225, 246, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: topbarGradientShift 16s ease-in-out infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.06) 48%,
+      rgba(255, 255, 255, 0) 76%
+    );
+    transform: translateX(-125%);
+    animation: topbarShine 11s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .top-bar-inner {
+    padding: 9px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .top-bar-content {
+    color: #f4fbff;
+
+    i {
+      color: rgba(244, 251, 255, 0.92);
+    }
+
+    a {
+      color: #f4fbff;
+      transition: color 0.25s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .tf-phone-topbar {
+    border-right: 1px solid rgba(226, 247, 255, 0.2);
+
+    .icon {
+      background: rgba(8, 63, 96, 0.26);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow:
+        0 0 0 0 rgba(226, 247, 255, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      animation: topbarIconPulse 2.8s ease-in-out infinite;
+    }
+  }
+
+  .tf-social {
+    gap: 6px;
+
+    .item a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: rgba(8, 63, 96, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      transition:
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.32s ease,
+        border-color 0.32s ease,
+        box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+
+      .icon {
+        line-height: 0;
+      }
+
+      svg {
+        color: #ffffff;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+        transition: color 0.25s ease, transform 0.25s ease;
+      }
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0 10px 18px rgba(4, 35, 57, 0.26),
+          0 0 0 5px rgba(255, 255, 255, 0.1);
+
+        svg {
+          color: #127aa8;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+@keyframes topbarGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes topbarShine {
+  0%,
+  22% {
+    transform: translateX(-125%);
+    opacity: 0;
+  }
+  34% {
+    opacity: 1;
+  }
+  54% {
+    transform: translateX(125%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(125%);
+    opacity: 0;
+  }
+}
+
+@keyframes topbarIconPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(226, 247, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(226, 247, 255, 0),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 991px) {
+  .top-bar.top-bar-premium {
+    .top-bar-inner {
+      row-gap: 8px;
+    }
+
+    .tf-social .item a {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-bar.top-bar-premium {
+    animation: none;
+
+    &::after,
+    .tf-phone-topbar .icon {
+      animation: none;
+    }
+
+    .tf-social .item a {
+      transition: none;
+    }
+  }
+}

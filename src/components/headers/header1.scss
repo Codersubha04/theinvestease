@@ -1,0 +1,103 @@
+.header.header-premium {
+  .header-right {
+    gap: 10px;
+  }
+
+  .header-premium-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 132px;
+    height: 46px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(20, 132, 181, 0.14);
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #1ea7d7, #1484b5);
+    box-shadow: 0 8px 18px rgba(16, 119, 161, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.28);
+      transform: skewX(-25deg);
+      transition: left 0.6s ease;
+    }
+
+    .btn-icon {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 12px 24px rgba(20, 132, 181, 0.28);
+    }
+
+    &:hover::before {
+      left: 130%;
+    }
+
+    &:hover .btn-icon {
+      transform: translateX(4px);
+    }
+  }
+
+  .header-premium-btn-secondary {
+    color: #163a57;
+    background: linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+    border-color: rgba(20, 132, 181, 0.24);
+    box-shadow:
+      0 8px 18px rgba(7, 45, 63, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    &::before {
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #ffffff;
+      background: linear-gradient(135deg, #1ea7d7, #1484b5);
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 12px 24px rgba(20, 132, 181, 0.28);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .header.header-premium {
+    .header-premium-btn {
+      min-width: 124px;
+      height: 44px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header.header-premium {
+    .header-premium-btn,
+    .header-premium-btn::before,
+    .header-premium-btn .btn-icon,
+    .header-premium-btn span {
+      transition: none !important;
+    }
+  }
+}

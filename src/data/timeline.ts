@@ -1,32 +1,27 @@
 export const timelineItems = [
   {
-    year: "2010",
-    title: "Founded",
+    year: "Our Mission",
+    title: "Our Mission",
     description:
-      "Established with a mission to provide innovative financial and business consulting services.",
+      "Our mission is to deliver independent, research-driven investment insights that add meaningful value to investor decision-making. Through disciplined analysis, transparency, and ethical practices, we support informed, responsible, and long-term investment decisions.",
   },
   {
     year: "2013",
-    title: "Industry Recognition",
+    title: "Our Vision",
     description:
-      "Received our first major award, marking a reputation for excellence in tailored business solutions.",
+      "Our vision is to become a trusted and respected independent investment research firm, recognized for integrity, analytical depth, regulatory compliance, and consistent value creation for investors.",
   },
   {
     year: "2018",
-    title: "Major Milestone",
+    title: "Our Commitment",
     description:
-      "Achieved a significant milestone, reaching over 1,000 clients across multiple industries.",
+      "We are committed to upholding the highest standards of research quality, transparency, and regulatory compliance. Every insight we deliver reflects responsibility, clarity, and an investor-first philosophy.",
   },
   {
     year: "2024",
-    title: "Global Reach",
+    title: "Our Approach",
     description:
-      "Successfully expanded our services internationally, now serving clients in over 15 countries.",
+      "Our approach is grounded in structured research frameworks, fundamental analysis, and risk-aware evaluation. We prioritize clarity over complexity, long-term value over short-term speculation, and disciplined reasoning over market noise.",
   },
-  {
-    year: "2025",
-    title: "Global Reach",
-    description:
-      "Successfully expanded our services internationally, now serving clients in over 15 countries.",
-  },
+  
 ];

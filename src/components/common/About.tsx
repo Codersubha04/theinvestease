@@ -1,185 +1,165 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Send } from "lucide-react";
+import "./about.scss";
 
-import { useState } from "react";
 import OdometerComponent from "./OdometerComponent";
 import { counters } from "@/data/cta";
-import ModalVideo from "./ModalVideo";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
-  const [isOpen, setIsOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [aboutImageSrc, setAboutImageSrc] = useState(
+    "/image/page-title/page-title-home-2.jpeg",
+  );
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      const introTimeline = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 78%",
+          once: true,
+        },
+      });
+
+      introTimeline
+        .from(".about-chip", {
+          y: 18,
+          autoAlpha: 0,
+          duration: 0.45,
+        })
+        .from(
+          ".about-title",
+          {
+            y: 28,
+            autoAlpha: 0,
+            duration: 0.65,
+          },
+          "-=0.2"
+        )
+        .from(
+          ".about-description",
+          {
+            y: 22,
+            autoAlpha: 0,
+            duration: 0.65,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".about-cta-btn",
+          {
+            y: 14,
+            autoAlpha: 0,
+            duration: 0.45,
+            immediateRender: false,
+          },
+          "-=0.25"
+        );
+
+      gsap.from(".about-media-card", {
+        y: 34,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".about-media-card",
+          start: "top 82%",
+          once: true,
+        },
+      });
+
+      gsap.from(".about-stat-item", {
+        y: 18,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".about-stats-grid",
+          start: "top 88%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <>
-      <section className="section-about h-2 section-one-page" id="about">
-        <div className="about-inner">
-          <div className="section-about-left">
-            <div className="about-top">
-              <div className="tf-container">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="about-content">
-                      <div className="heading-section">
-                        <div className="text-anime-wave">
-                          <a href="#" className="tag label text-btn-uppercase">
-                            WE ARE FinWice
-                          </a>
-                        </div>
-                        <h3 className="title-section mb-28 text-anime-wave">
-                          Empowering Your Business
-                          <br />
-                          Success
-                        </h3>
-                        <div className="sub-title mb-32 text-anime-wave">
-                          At FinWice, we empower businesses with tailored
-                          strategies, innovative solutions, and
-                          <br />
-                          expert consulting. Our industry professionals drive
-                          growth and guide you through <br />
-                          challenges to achieve success.
-                        </div>
-                        <div className="text-anime-wave">
-                          <Link
-                            to={`/about-us`}
-                            className="tf-btn style-1 bg-on-suface-container"
-                          >
-                            <span> About Us </span>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className="wg-counter style-column g-40 rtl-text-start">
-                        {counters.map((counter, index) => (
-                          <div className="counter-item" key={index}>
-                            <div className="counter">
-                              <div className="number-counter">
-                                <h4 className="number odometer color-primary">
-                                  <OdometerComponent max={counter.value} />
-                                </h4>
-                                <h4 className="plus color-primary">+</h4>
-                              </div>
-                              <p className="text text-btn-uppercase label">
-                                {counter.label}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="about-bottom">
-              <div className="tf-container">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="flat-animate-tab">
-                      <div className="wg-tab style-small">
-                        <ul className="tab-product min-w-366" role="tablist">
-                          <li className="nav-tab-item" role="presentation">
-                            <h6>
-                              <a
-                                href="#expertise"
-                                data-bs-toggle="tab"
-                                role="tab"
-                                className="active"
-                              >
-                                Expertise
-                              </a>
-                            </h6>
-                          </li>
-                          <li className="nav-tab-item" role="presentation">
-                            <h6>
-                              <a
-                                href="#innovation"
-                                data-bs-toggle="tab"
-                                role="tab"
-                              >
-                                Innovation
-                              </a>
-                            </h6>
-                          </li>
-                          <li className="nav-tab-item" role="presentation">
-                            <h6>
-                              <a
-                                href="#commitment"
-                                data-bs-toggle="tab"
-                                role="tab"
-                              >
-                                Commitment
-                              </a>
-                            </h6>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="tab-content">
-                        <div
-                          className="tab-pane active show"
-                          id="expertise"
-                          role="tabpanel"
-                        >
-                          <p className="text">
-                            Our team of experts delivers tailored insights and
-                            solutions, guiding you through complex challenges.
-                            Partner with us for impactful results and reliable
-                            support on your path to success.
-                          </p>
-                        </div>
-                        <div
-                          className="tab-pane"
-                          id="innovation"
-                          role="tabpanel"
-                        >
-                          <p className="text">
-                            Our team of experts delivers tailored insights and
-                            solutions, guiding you through complex challenges.
-                            Partner with us for impactful results and reliable
-                            support on your path to success.
-                          </p>
-                        </div>
-                        <div
-                          className="tab-pane"
-                          id="commitment"
-                          role="tabpanel"
-                        >
-                          <p className="text">
-                            Our team of experts delivers tailored insights and
-                            solutions, guiding you through complex challenges.
-                            Partner with us for impactful results and reliable
-                            support on your path to success.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <section
+      ref={sectionRef}
+      className="section-about section-about-premium py-5"
+      id="about"
+    >
+      <div className="container py-5">
+        <div className="row align-items-center g-4 g-lg-5">
+          <div className="col-lg-6 pe-lg-4">
+            <span className="about-chip">WE ARE INVESTEASE</span>
+
+            <h2 className="about-title">
+              Welcome to <span>InvestEase Research</span>
+            </h2>
+
+            <p className="about-description">
+              InvestEase Research is a SEBI-registered Research Analyst firm
+              (SEBI Registration No.: INH000020721) and is duly enlisted with
+              BSE Limited as a Research Analyst (BSE Enlistment No.: 6568). We
+              are committed to delivering independent, data-driven equity
+              research and long-term investment insights built on rigorous
+              fundamental analysis, structured market research, and economic
+              evaluation. Our research framework follows ethical, transparent,
+              and compliance-focused practices, ensuring that every insight is
+              supported by clear rationale and disciplined methodology. At
+              InvestEase Research, we aim to simplify complex market
+              information and support investors in making informed,
+              responsible, and well-considered investment decisions with a
+              long-term perspective, clarity, and confidence.
+            </p>
+
+            <Link
+              to="/contact-us"
+              className="about-cta-btn"
+              aria-label="Contact InvestEase"
+            >
+              <span>Contact Us</span>
+              <Send size={18} className="btn-icon" />
+            </Link>
           </div>
-          <div className="section-about-right tf-animate-4">
-            <div className="wg-video">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsOpen(true);
-                }}
-                className="popup-youtube"
-              >
-                <div className="icon">
-                  <i className="icon-Play" />
-                </div>
-                <div className="wave" />
-                <div className="wave" />
-                <div className="wave" />
-              </a>
+
+          <div className="col-lg-6">
+            <div className="about-media-card">
+              <img
+                src={aboutImageSrc}
+                alt="InvestEase Research"
+                className="about-image"
+                loading="eager"
+                decoding="async"
+                onError={() => setAboutImageSrc("/image/page-title/page-title-home-2.png")}
+              />
+
+              <div className="about-stats-grid">
+                {counters.map((counter, index) => (
+                  <div className="about-stat-item" key={index}>
+                    <h4 className="about-stat-value mb-0">
+                      <OdometerComponent max={counter.value} />+
+                    </h4>
+                    <small className="about-stat-label">{counter.label}</small>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <ModalVideo
-        videoId={"XHOmBV4js_E"}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-    </>
+      </div>
+    </section>
   );
 }

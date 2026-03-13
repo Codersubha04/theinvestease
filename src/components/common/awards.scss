@@ -1,0 +1,210 @@
+.section-awards-premium {
+  font-family: "Rethink Sans", sans-serif;
+  padding-top: 46px;
+  padding-bottom: 92px;
+  background:
+    radial-gradient(circle at 14% 16%, rgba(30, 167, 215, 0.08), transparent 42%),
+    radial-gradient(circle at 88% 84%, rgba(20, 132, 181, 0.1), transparent 45%),
+    #f4f7fa;
+
+  .heading-section {
+    margin-bottom: 42px;
+  }
+
+  .awards-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(30, 167, 215, 0.25);
+    border-radius: 999px;
+    background: rgba(30, 167, 215, 0.12);
+    color: #0d6f98;
+    letter-spacing: 0.09em;
+  }
+
+  .awards-title {
+    font-family: "Rethink Sans", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #142236;
+
+    span {
+      color: #1388b8;
+    }
+  }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .awards-card {
+    background: linear-gradient(170deg, #ffffff 0%, #f7fcff 100%);
+    border: 1px solid rgba(10, 56, 78, 0.1);
+    border-radius: 18px;
+    padding: 24px 18px;
+    text-align: center;
+    box-shadow: 0 14px 30px rgba(8, 49, 65, 0.1);
+    transform: translate3d(0, 0, 0);
+    will-change: transform, box-shadow;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+
+    &:hover {
+      transform: translate3d(0, -7px, 0) scale(1.022);
+      border-color: rgba(20, 132, 181, 0.26);
+      box-shadow: 0 24px 46px rgba(20, 132, 181, 0.22);
+    }
+  }
+
+  .awards-logo-wrap {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+
+    img {
+      max-width: 100%;
+      max-height: 108px;
+      object-fit: contain;
+    }
+  }
+}
+
+@keyframes awardsMobileFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .section-awards-premium {
+    padding-top: 36px;
+    padding-bottom: 78px;
+
+    .awards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .awards-card {
+      border-radius: 16px;
+      padding: 18px 12px;
+    }
+
+    .awards-logo-wrap {
+      height: 108px;
+
+      img {
+        max-height: 82px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-awards-premium {
+    padding-top: 30px;
+    padding-bottom: 64px;
+
+    .tf-container {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .heading-section {
+      margin-bottom: 24px;
+    }
+
+    .awards-chip {
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      padding: 7px 12px;
+    }
+
+    .awards-title {
+      font-size: clamp(25px, 7vw, 31px);
+      line-height: 1.16;
+      letter-spacing: -0.01em;
+    }
+
+    .awards-chip,
+    .awards-title {
+      animation: awardsMobileFadeUp 0.55s ease both;
+    }
+
+    .awards-card {
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.3s ease;
+      animation: awardsMobileFadeUp 0.55s ease both;
+    }
+
+    .awards-card:nth-child(1) {
+      animation-delay: 0.06s;
+    }
+
+    .awards-card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .awards-card:nth-child(3) {
+      animation-delay: 0.18s;
+    }
+
+    .awards-card:nth-child(4) {
+      animation-delay: 0.24s;
+    }
+
+    .awards-card:active {
+      transform: translateY(-2px) scale(0.995);
+      box-shadow: 0 14px 28px rgba(20, 132, 181, 0.16);
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-awards-premium {
+    padding-top: 26px;
+    padding-bottom: 56px;
+
+    .awards-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .awards-card {
+      border-radius: 14px;
+      padding: 16px 12px;
+    }
+
+    .awards-logo-wrap {
+      height: 96px;
+
+      img {
+        max-height: 74px;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-awards-premium {
+    .awards-chip,
+    .awards-title,
+    .awards-card {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

@@ -1,0 +1,315 @@
+.policySection {
+  position: relative;
+  overflow: hidden;
+  padding-top: 148px;
+  padding-bottom: 72px;
+  background:
+    radial-gradient(circle at 8% 14%, rgba(6, 188, 253, 0.14), transparent 36%),
+    radial-gradient(circle at 90% 10%, rgba(36, 40, 62, 0.12), transparent 28%),
+    linear-gradient(180deg, #f7fbff 0%, #ffffff 56%, #f6f9fd 100%);
+}
+
+.policySection::before {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: 68px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: rgba(6, 188, 253, 0.2);
+  filter: blur(60px);
+  animation: floatBlob 8s ease-in-out infinite;
+}
+
+.headerBlock {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 34px;
+  padding: 34px 26px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(233, 246, 255, 0.9) 100%
+  );
+  box-shadow:
+    0 20px 44px rgba(20, 45, 71, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: fadeInUp 0.7s ease both;
+}
+
+.headerBlock h1 {
+  margin: 0 0 16px;
+  font-family: "Geologica", sans-serif;
+  color: var(--on-suface-container);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.headerBlock p {
+  max-width: 740px;
+  margin: 0 auto;
+  color: var(--on-suface-variant-1);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.policyList {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(36, 40, 62, 0.1);
+  box-shadow: 0 20px 45px rgba(36, 40, 62, 0.1);
+  overflow: hidden;
+}
+
+.policyItem {
+  position: relative;
+  margin: 0;
+  padding: 28px 38px;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeInUp 0.55s ease forwards;
+}
+
+.policyItem + .policyItem {
+  border-top: 1px solid rgba(36, 40, 62, 0.08);
+}
+
+.policyItem:hover {
+  background: linear-gradient(
+    100deg,
+    rgba(6, 188, 253, 0.06) 0%,
+    rgba(255, 255, 255, 0.92) 58%
+  );
+}
+
+.policyItem h4 {
+  margin: 0 0 10px;
+  font-size: 1.34rem;
+  font-weight: 700;
+  color: var(--on-suface-container);
+}
+
+.policyItem p {
+  margin: 0;
+  color: var(--on-suface-variant-1);
+  line-height: 1.76;
+  font-size: 1rem;
+}
+
+.policyItem p + p {
+  margin-top: 10px;
+}
+
+.subList {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subList li {
+  position: relative;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  color: var(--on-suface-variant-1);
+  line-height: 1.7;
+}
+
+@media (min-width: 992px) {
+  .headerBlock p {
+    font-size: 17px;
+  }
+
+  .policyItem h4 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  .policyItem p,
+  .subList li {
+    font-size: 17px;
+  }
+}
+
+.subList li:last-child {
+  margin-bottom: 0;
+}
+
+.subList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--primary), #23c8ff);
+  box-shadow: 0 0 0 3px rgba(6, 188, 253, 0.16);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatBlob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (max-width: 991px) {
+  .policySection {
+    padding-top: 120px;
+    padding-bottom: 56px;
+  }
+
+  .headerBlock {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .policyItem {
+    padding: 24px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .headerBlock {
+    margin-bottom: 22px;
+    padding: 20px 15px;
+    border-radius: 16px;
+    box-shadow:
+      0 12px 28px rgba(20, 45, 71, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .policySection {
+    padding-top: 108px;
+    padding-bottom: 42px;
+  }
+
+  .policySection .headerBlock h1 {
+    font-size: clamp(2.15rem, 10vw, 2.55rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .policySection .headerBlock p {
+    font-size: 1.04rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .policyList {
+    border-radius: 12px;
+    box-shadow: 0 14px 30px rgba(36, 40, 62, 0.11);
+  }
+
+  .policyItem {
+    padding: 17px 14px;
+  }
+
+  .policySection .policyItem h4 {
+    font-size: clamp(1.28rem, 6.9vw, 1.52rem) !important;
+    line-height: 1.32 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .policySection .policyItem p,
+  .policySection .subList li {
+    font-size: 1.02rem !important;
+    line-height: 1.64 !important;
+  }
+
+  .subList {
+    margin-top: 10px;
+  }
+
+  .subList li {
+    padding-left: 18px;
+    margin-bottom: 7px;
+  }
+
+  .subList li::before {
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 2px rgba(6, 188, 253, 0.16);
+  }
+}
+
+@media (max-width: 480px) {
+  .policySection {
+    padding-top: 96px;
+    padding-bottom: 36px;
+  }
+
+  .headerBlock {
+    margin-bottom: 18px;
+    padding: 18px 13px;
+    border-radius: 14px;
+  }
+
+  .policySection .headerBlock h1 {
+    font-size: clamp(1.95rem, 9.8vw, 2.2rem) !important;
+    line-height: 1.17 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .policySection .headerBlock p {
+    font-size: 1.2rem !important;
+    line-height: 1.56 !important;
+  }
+
+  .policyList {
+    border-radius: 10px;
+  }
+
+  .policyItem {
+    padding: 15px 12px;
+  }
+
+  .policySection .policyItem h4 {
+    font-size: 1.4rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .policySection .policyItem p,
+  .policySection .subList li {
+    font-size: 1.2rem !important;
+    line-height: 1.56 !important;
+  }
+
+  .policyItem:hover {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .policySection::before,
+  .headerBlock,
+  .policyItem {
+    animation: none !important;
+    transform: none !important;
+  }
+}

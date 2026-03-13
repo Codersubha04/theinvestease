@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
 
 import Nav from "./Nav";
 import NavOnepage from "./NavOnepage";
 // import CartLength from "../common/CartLength";
 // import SearchButton from "./SearchButton";
 import { debounce } from "@/utils/debounce";
+import "./header1.scss";
 
 export default function Header1({ onepage = false }) {
   const [isFixed, setIsFixed] = useState(false);
@@ -30,7 +32,7 @@ export default function Header1({ onepage = false }) {
 
   return (
     <header
-      className={`header style-1 style-absolute header-fixed ${
+      className={`header style-1 style-absolute header-fixed header-premium ${
         isFixed ? "is-fixed" : ""
       } `}
       id="header"
@@ -64,7 +66,7 @@ export default function Header1({ onepage = false }) {
                 <div className="nav-btn">
                   <Link
                     to={`/login`}
-                    className="tf-btn bg-white style-1 hover-bg-primary"
+                    className="header-premium-btn header-premium-btn-secondary"
                   >
                     <span>Login</span>
                   </Link>
@@ -72,9 +74,10 @@ export default function Header1({ onepage = false }) {
                 <div className="nav-btn">
                   <Link
                     to={`/contact-us`}
-                    className="tf-btn bg-white style-1 hover-bg-primary"
+                    className="header-premium-btn"
                   >
                     <span>Get Started</span>
+                    <Send size={16} className="btn-icon" />
                   </Link>
                 </div>
                 <div className="nav-icon">

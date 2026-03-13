@@ -1,11 +1,41 @@
 import { Link } from "react-router-dom";
-// import ContactForm from "./ContactForm";
 import "./contact.scss";
-import { PhoneCall, Mail, Clock } from "lucide-react";
+import {
+  PhoneCall,
+  Mail,
+  Clock,
+  BadgeCheck,
+  Headset,
+  FileCheck2,
+  Handshake,
+} from "lucide-react";
 
 export default function Contact() {
+  const strengths = [
+    {
+      icon: <BadgeCheck size={18} strokeWidth={2.2} />,
+      text: "SEBI-Registered Research Analyst",
+      delay: ".1s",
+    },
+    {
+      icon: <Headset size={18} strokeWidth={2.2} />,
+      text: "24/7 Expert support",
+      delay: ".15s",
+    },
+    {
+      icon: <FileCheck2 size={18} strokeWidth={2.2} />,
+      text: "Clear disclosures and transparent communication",
+      delay: ".2s",
+    },
+    {
+      icon: <Handshake size={18} strokeWidth={2.2} />,
+      text: "Investor-first mindset",
+      delay: ".25s",
+    },
+  ];
+
   return (
-    <section className="section-contact-home page-contact tf-spacing-2">
+    <section className="section-contact-home page-contact tf-spacing-2 contact-section-premium">
       <div className="tf-container position-relative">
         <div className="row rg-60">
           <div className="">
@@ -14,14 +44,14 @@ export default function Contact() {
                 <div className="heading-section mb-28">
                   <div className="wow fadeInUp">
                     <Link
-                      to={`/contact-us`}
-                      className="tag label text-btn-uppercase mb-12"
+                      to="/contact-us"
+                      className="tag label text-btn-uppercase mb-12 contact-chip"
                     >
-                      Contact US
+                      Contact Us
                     </Link>
                   </div>
-                  <h3 className="title-section mb-12 wow fadeInUp">
-                    Get in Touch with InvestEase
+                  <h3 className="title-section mb-12 wow fadeInUp contact-title">
+                    Get in Touch with <span>InvestEase</span>
                   </h3>
                   <div className="sub-title body-2 color-on-suface-container wow fadeInUp">
                     Have questions about equity research, market insights, or
@@ -37,90 +67,53 @@ export default function Contact() {
                     with Us?
                   </div>
                 </div>
-                <div className="cols">
-                  <div className="benefit-lists item">
-                    <div className="benefit-items">
-                      <div className="icon wow fadeInUp">
-                        <i className="icon-checkbox" />
-                      </div>
-                      <div
-                        className="caption-1 wow fadeInUp"
-                        data-wow-delay=".1s"
-                      >
-                        SEBI-Registered Research Analyst
+                <div className="cols contact-strengths">
+                  {strengths.map((item) => (
+                    <div className="benefit-lists item" key={item.text}>
+                      <div className="benefit-items contact-strength-item">
+                        <div className="icon wow fadeInUp">{item.icon}</div>
+                        <div className="caption-1 wow fadeInUp" data-wow-delay={item.delay}>
+                          {item.text}
+                        </div>
                       </div>
                     </div>
-                    <div className="benefit-items">
-                      <div className="icon wow fadeInUp">
-                        <i className="icon-checkbox" />
-                      </div>
-                      <div
-                        className="caption-1 wow fadeInUp"
-                        data-wow-delay=".1s"
-                      >
-                        24/7 Expert support
-                      </div>
-                    </div>
-                  </div>
-                  <div className="benefit-lists item">
-                    <div className="benefit-items">
-                      <div className="icon wow fadeInUp" data-wow-delay=".2s">
-                        <i className="icon-checkbox" />
-                      </div>
-                      <div
-                        className="caption-1 wow fadeInUp"
-                        data-wow-delay=".3s"
-                      >
-                        Clear disclosures and transparent communication
-                      </div>
-                    </div>
-                    <div className="benefit-items">
-                      <div className="icon wow fadeInUp" data-wow-delay=".2s">
-                        <i className="icon-checkbox" />
-                      </div>
-                      <div
-                        className="caption-1 wow fadeInUp"
-                        data-wow-delay=".3s"
-                      >
-                        Investor-first mindset
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
                 <div className="contact-card-wrapper mt-5">
-                  <div className="row g-4">
-                    {/* Call */}
+                  <div className="row g-4 contact-info-grid">
                     <div className="col-lg-4 col-md-6">
-                      <div className="contact-dark-card">
+                      <article className="contact-dark-card contact-info-card">
                         <div className="icon-circle">
                           <PhoneCall size={26} strokeWidth={2} />
                         </div>
-                        <h5>Call or WhatsApp</h5>
-                        <p>+91-7980561156</p>
-                      </div>
+                        <h5 className="contact-info-label">Call or WhatsApp</h5>
+                        <p className="contact-info-main">+91-7980561156</p>
+                      </article>
                     </div>
 
-                    {/* Email */}
                     <div className="col-lg-4 col-md-6">
-                      <div className="contact-dark-card">
+                      <article className="contact-dark-card contact-info-card">
                         <div className="icon-circle">
                           <Mail size={26} strokeWidth={2} />
                         </div>
-                        <h5>Message Us</h5>
-                        <p>support@theinvestease.com</p>
-                      </div>
+                        <h5 className="contact-info-label">Message Us</h5>
+                        <p className="contact-info-main">support@theinvestease.com</p>
+                      </article>
                     </div>
 
-                    {/* Hours */}
                     <div className="col-lg-4 col-md-6">
-                      <div className="contact-dark-card">
+                      <article className="contact-dark-card contact-info-card">
                         <div className="icon-circle">
                           <Clock size={26} strokeWidth={2} />
                         </div>
-                        <h5>Open Hours</h5>
-                        <p>Monday – Saturday: 9:30 AM – 6:00 PM</p>
-                        <p>Sunday & Market Holidays: Closed</p>
-                      </div>
+                        <h5 className="contact-info-label">Open Hours</h5>
+                        <p className="contact-info-main">
+                          Monday - Saturday: 9:30 AM - 6:00 PM
+                        </p>
+                        <p className="contact-info-sub">
+                          Sunday & Market Holidays: Closed
+                        </p>
+                      </article>
                     </div>
                   </div>
                 </div>

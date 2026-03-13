@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
 
 import { servicesData } from "@/data/services";
 
 export default function Services() {
+  const serviceTitles = [
+    "Stock Basket",
+    "Active Swing Trading Advisory",
+    "InvestEase School",
+  ];
+
+  const serviceItems = servicesData.slice(0, 3).map((item, index) => ({
+    ...item,
+    title: serviceTitles[index] ?? item.title,
+  }));
+
   return (
     <section
-      className="section-services h-1 tf-spacing-31 bg-surface section-one-page"
+      className="section-services h-1 tf-spacing-31 bg-surface section-one-page home1-services-premium"
       id="services"
     >
       <div className="tf-container">
@@ -14,36 +25,34 @@ export default function Services() {
             <div className="heading-section style-2">
               <div className="left">
                 <div className="text-anime-wave">
-                  <a href="#" className="tag label text-btn-uppercase bg-white">
+                  <span className="tag label text-btn-uppercase bg-white services-chip">
                     Our Services
-                  </a>
+                  </span>
                 </div>
-                <h3 className="title-section text-anime-wave">
-                  Custom Strategies for Your Goals
+                <h3 className="title-section text-anime-wave services-title">
+                  Research-Led Services For <span>Smarter Decisions</span>
                 </h3>
               </div>
               <div className="text-anime-wave-2">
-                <Link
-                  to="/our-services-1"
-                  className="tf-btn style-1 bg-on-suface-container"
-                >
-                  <span> View All Services </span>
-                </Link>
+                <span className="services-view-btn">
+                  <span>View All Services</span>
+                  <Send size={18} className="btn-icon" />
+                </span>
               </div>
             </div>
 
-            <div className="section-services-content">
+            <div className="section-services-content services-shell">
               <div className="flat-animate-tab">
-                <div className="wg-tab">
+                <div className="wg-tab services-tabs">
                   <ul className="tab-product min-w-757" role="tablist">
-                    {servicesData.map(({ id, title, isActive }) => (
+                    {serviceItems.map(({ id, title, isActive }) => (
                       <li className="nav-tab-item" role="presentation" key={id}>
                         <h5>
                           <a
                             href={`#${id}`}
                             data-bs-toggle="tab"
                             role="tab"
-                            className={isActive ? "active" : ""}
+                            className={`services-tab-link ${isActive ? "active" : ""}`}
                           >
                             {title}
                           </a>
@@ -54,7 +63,7 @@ export default function Services() {
                 </div>
 
                 <div className="tab-content">
-                  {servicesData.map(
+                  {serviceItems.map(
                     ({
                       id,
                       imgSrc,
@@ -74,7 +83,7 @@ export default function Services() {
                       >
                         <div className="section-services-item">
                           <div className="image tf-animate-1">
-                            <Link to="/services-details-1" className="link" />
+                            <span className="link" aria-hidden="true" />
                             <img
                               src={imgSrc}
                               alt={title}
@@ -86,12 +95,9 @@ export default function Services() {
                           <div className="services-content">
                             <div className="heading">
                               <h3>
-                                <Link
-                                  to="/services-details-1"
-                                  className="name-services wow fadeInUp"
-                                >
+                                <span className="name-services wow fadeInUp">
                                   {title}
-                                </Link>
+                                </span>
                               </h3>
                               <div className="sub-name body-2 wow fadeInUp">
                                 {description}
@@ -112,12 +118,10 @@ export default function Services() {
                                 </div>
                               ))}
                             </div>
-                            <Link
-                              to="/services-details-1"
-                              className="tf-btn style-1 bg-on-suface-container wow fadeInUp"
-                            >
+                            <span className="service-cta-btn wow fadeInUp">
                               <span>{linkText}</span>
-                            </Link>
+                              <Send size={18} className="btn-icon" />
+                            </span>
                           </div>
                         </div>
                       </div>

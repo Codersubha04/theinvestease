@@ -1,7 +1,54 @@
 import { Link } from "react-router-dom";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Send,
+  Youtube,
+} from "lucide-react";
+import "./footer1-custom.scss";
 
 import { useEffect } from "react";
 import NewsLetterForm from "../common/NewsLetterForm";
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61587700070114",
+    icon: Facebook,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@InvestEaseSchool",
+    icon: Youtube,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/investease_research/",
+    icon: Instagram,
+  },
+  {
+    label: "Telegram",
+    href: "https://t.me/InvestEase_Official",
+    icon: Send,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/investease-research/",
+    icon: Linkedin,
+  },
+  {
+    label: "Twitter/X",
+    href: "https://x.com/the_investease",
+    icon: Twitter,
+  },
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/917980561156",
+    iconClass: "bi bi-whatsapp",
+  },
+];
 
 export default function Footer1({ parentClass = "footer" }) {
   useEffect(() => {
@@ -101,13 +148,13 @@ export default function Footer1({ parentClass = "footer" }) {
                         <Link to={`/`}>Home</Link>
                       </li>
                       <li className="support-item-footer caption-1">
-                        <Link to={`/about-investease`}>About InvestEase</Link>
+                        <Link to={`/about-us`}>About InvestEase</Link>
                       </li>
                       <li className="support-item-footer caption-1">
-                        <Link to={`/services`}>Services</Link>
+                        <Link to={`/`}>Services</Link>
                       </li>
                       <li className="support-item-footer caption-1">
-                        <Link to={`/investor-education`}>
+                        <Link to={`/`}>
                           Investor Education
                         </Link>
                       </li>
@@ -115,10 +162,10 @@ export default function Footer1({ parentClass = "footer" }) {
                         <Link to={`/contact-us`}>Contact Us</Link>
                       </li>
                       <li className="support-item-footer caption-1">
-                        <Link to={`/e-kyc`}>e-KYC</Link>
+                        <Link to={`/register`}>e-KYC</Link>
                       </li>
                       <li className="support-item-footer caption-1">
-                        <Link to={`/faq`}>FAQ</Link>
+                        <Link to={`/`}>FAQ</Link>
                       </li>
                     </ul>
                   </div>
@@ -179,42 +226,27 @@ export default function Footer1({ parentClass = "footer" }) {
                 </div>
                 <div className="footer-social">
                   <div className="title-footer">Follow Us:</div>
-                  <ul className="tf-social style-border radius-50 g-8 style-2">
-                    <li className="item">
-                      <a href="#">
-                        <div className="icon">
-                          <i className="icon-messenger" />
-                        </div>
-                      </a>
-                    </li>
-                    <li className="item">
-                      <a href="#">
-                        <div className="icon">
-                          <i className="icon-x" />
-                        </div>
-                      </a>
-                    </li>
-                    <li className="item">
-                      <a href="#">
-                        <div className="icon">
-                          <i className="icon-ig1" />
-                        </div>
-                      </a>
-                    </li>
-                    <li className="item">
-                      <a href="#">
-                        <div className="icon">
-                          <i className="icon-skype" />
-                        </div>
-                      </a>
-                    </li>
-                    <li className="item">
-                      <a href="#">
-                        <div className="icon">
-                          <i className="icon-telegram" />
-                        </div>
-                      </a>
-                    </li>
+                  <ul className="tf-social style-border radius-50 g-8 footer-social-premium">
+                    {socialLinks.map(({ label, href, icon: Icon, iconClass }) => (
+                      <li className="item" key={label}>
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={label}
+                          title={label}
+                          className="footer-social-link"
+                        >
+                          <div className="icon footer-social-icon">
+                            {iconClass ? (
+                              <i className={iconClass} style={{ fontSize: "15px", lineHeight: 1 }} />
+                            ) : (
+                              Icon ? <Icon size={15} strokeWidth={2.1} /> : null
+                            )}
+                          </div>
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

@@ -1,0 +1,110 @@
+.footer-social-premium {
+  .item {
+    .footer-social-link {
+      .footer-social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #e9f4ff;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(186, 215, 245, 0.28);
+        transition:
+          transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease,
+          color 0.3s ease;
+
+        i,
+        svg {
+          color: inherit !important;
+        }
+
+        .bi-whatsapp {
+          color: inherit !important;
+        }
+      }
+
+      &:hover .footer-social-icon,
+      &:focus-visible .footer-social-icon {
+        color: #ffffff !important;
+        background: linear-gradient(
+          135deg,
+          rgba(30, 167, 215, 0.9),
+          rgba(20, 132, 181, 0.92)
+        );
+        border-color: rgba(143, 220, 255, 0.62);
+        box-shadow:
+          0 10px 22px rgba(20, 132, 181, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+
+        i,
+        svg,
+        .bi-whatsapp {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+}
+
+#footer {
+  .footer-subscribe {
+    .newsletter-form {
+      .tf-btn-newsletter,
+      fieldset .tf-btn-newsletter {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        border: 1px solid rgba(186, 215, 245, 0.28) !important;
+        background: rgba(255, 255, 255, 0.02) !important;
+        color: #e9f4ff !important;
+        transform: translateY(-50%);
+        transition:
+          transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease,
+          color 0.3s ease;
+
+        i {
+          color: #e9f4ff !important;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        &:hover,
+        &:focus-visible {
+          color: #ffffff !important;
+          background: linear-gradient(
+            135deg,
+            rgba(30, 167, 215, 0.9),
+            rgba(20, 132, 181, 0.92)
+          ) !important;
+          border-color: rgba(143, 220, 255, 0.62) !important;
+          box-shadow:
+            0 10px 22px rgba(20, 132, 181, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+          transform: translateY(calc(-50% - 2px)) !important;
+        }
+
+        &:hover i,
+        &:focus-visible i {
+          color: #ffffff !important;
+          transform: translateX(1px);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-social-premium .item .footer-social-link .footer-social-icon,
+  #footer .footer-subscribe .newsletter-form .tf-btn-newsletter,
+  #footer .footer-subscribe .newsletter-form .tf-btn-newsletter i {
+    transition: none !important;
+  }
+}

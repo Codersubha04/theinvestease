@@ -11,13 +11,15 @@ import Faqs from "@/components/homes/home-1/Faqs";
 import Hero from "@/components/homes/home-1/Hero";
 import Process from "@/components/homes/home-1/Process";
 import Services from "@/components/common/Services";
-import Testimonials from "@/components/homes/home-1/Testimonials";
+import GoogleReviews from "@/components/otherPages/GoogleReviews";
 import MetaComponent from "@/components/common/MetaComponent";
 import Features from "@/components/common/Features";
+import Newsletter from "@/components/otherPages/Newsletter";
+
 const metadata = {
-  title:
-    "InvestEase Research (SEBI RA)",
-  description: "InvestEase Research (SEBI RA)",
+  title: "InvestEase Research (SEBI RA)",
+  description:
+    "InvestEase Research is a SEBI-registered Research Analyst firm delivering research-driven equity insights, advisory support, and investor education.",
 };
 export default function HomePage() {
   return (
@@ -33,11 +35,12 @@ export default function HomePage() {
         <Process />
         <Features />
         <CaseStudies />
-        <Testimonials />
+        <GoogleReviews />
         <Faqs />
         <Blogs />
         <Awards />
         <Cta />
+        <Newsletter />
       </div>
       <Footer1 />
     </>

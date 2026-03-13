@@ -1,0 +1,290 @@
+.newsletter-section {
+  padding: 0 0 60px 0;
+  background: #f4f7fa;
+}
+
+.newsletter-box {
+  background: linear-gradient(135deg, #0f1a36, #1c2237);
+  border-radius: 22px;
+  padding: 50px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-box::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(30, 167, 215, 0.25), transparent 60%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.newsletter-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 1;
+}
+
+.icon-wrap {
+  width: 60px;
+  height: 60px;
+  background: rgba(30, 167, 215, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.newsletter-left h3 {
+  font-size: clamp(34px, 2.6vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.12;
+  animation: newsletterTitleReveal 0.65s ease both;
+}
+
+.newsletter-title span {
+  color: #79d8ff;
+  animation: newsletterAccentPulse 2.8s ease-in-out infinite;
+}
+
+.newsletter-left p {
+  font-size: 17px;
+  line-height: 1.55;
+  opacity: 0.85;
+  animation: newsletterFadeUp 0.7s ease both;
+  animation-delay: 0.08s;
+}
+
+.newsletter-section .primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #1ea7d7, #1484b5);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: newsletterFadeUp 0.75s ease both;
+  animation-delay: 0.14s;
+}
+
+.newsletter-section .primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(30, 167, 215, 0.4);
+}
+
+.newsletter-section .primary-btn .btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.newsletter-section .primary-btn:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+.newsletter-section .primary-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  transition: 0.6s;
+}
+
+.newsletter-section .primary-btn:hover::before {
+  left: 130%;
+}
+
+@media (max-width: 991px) {
+  .newsletter-section {
+    padding: 0 0 52px 0;
+  }
+
+  .newsletter-box {
+    padding: 34px 30px;
+    border-radius: 18px;
+    gap: 22px;
+  }
+
+  .newsletter-left h3 {
+    font-size: 20px !important;
+    line-height: 1.2;
+  }
+
+  .newsletter-left p {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 767px) {
+  .newsletter-section {
+    padding: 0 0 44px 0;
+
+    .container {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  .newsletter-box {
+    padding: 24px 16px;
+    border-radius: 16px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: 0 16px 34px rgba(10, 33, 56, 0.22);
+    animation: newsletterFadeUp 0.6s ease both;
+  }
+
+  .newsletter-box::after {
+    width: 250px;
+    height: 250px;
+    top: -70px;
+    right: -70px;
+  }
+
+  .newsletter-left {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    flex: 0 0 44px;
+    margin-top: 1px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .newsletter-left h3 {
+    font-size: 20px !important;
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  .newsletter-left p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .newsletter-right {
+    width: 100%;
+  }
+
+  .newsletter-section .primary-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    box-shadow: 0 10px 24px rgba(30, 167, 215, 0.28);
+  }
+
+  .newsletter-section .primary-btn:active {
+    transform: translateY(-1px) scale(0.995);
+  }
+}
+
+@media (max-width: 575px) {
+  .newsletter-box {
+    padding: 22px 14px;
+  }
+
+  .newsletter-left h3 {
+    font-size: 20px !important;
+  }
+
+  .newsletter-left p {
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+
+  .icon-wrap {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+@keyframes newsletterFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes newsletterTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes newsletterAccentPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(121, 216, 255, 0);
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 14px rgba(121, 216, 255, 0.32);
+    opacity: 0.96;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-box {
+    animation: none !important;
+  }
+
+  .newsletter-title span {
+    animation: none !important;
+  }
+
+  .newsletter-section .primary-btn,
+  .newsletter-section .primary-btn::before {
+    transition: none !important;
+  }
+}

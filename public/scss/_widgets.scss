@@ -2434,7 +2434,7 @@
   background-color: var(--bg-1);
   text-align: center;
   padding: 30px;
-  min-height: 234px;
+  height: 350px!important;
   margin: 0 15px;
   @include mixin.transition3();
 
