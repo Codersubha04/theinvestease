@@ -1,3 +1,11 @@
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Legal Disclaimer | InvestEase Research Legal Notice",
+  description:
+    "Review the InvestEase Research legal disclaimer covering website usage, informational limitations, liability boundaries, and investor responsibility.",
+};
+
 export default function LegalDisclaimer() {
   const h = {
     color: "#24283E",
@@ -16,6 +24,7 @@ export default function LegalDisclaimer() {
 
   return (
     <>
+      <MetaComponent meta={metadata} />
       <div style={{ height: "120px" }} />
 
       <section className="tf-section">

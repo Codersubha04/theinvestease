@@ -1,0 +1,421 @@
+.pageShell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(18, 57, 86, 0.72), transparent 34%),
+    radial-gradient(circle at 20% 20%, rgba(30, 167, 215, 0.1), transparent 24%),
+    radial-gradient(circle at 80% 80%, rgba(20, 132, 181, 0.08), transparent 22%),
+    linear-gradient(180deg, #031019 0%, #071c29 42%, #06131c 100%);
+}
+
+.comingSoonSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 132px 0 72px;
+  position: relative;
+  z-index: 1;
+}
+
+.starsLayer,
+.starsLayerSoft {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.starsLayer {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(151, 220, 255, 0.75) 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.45) 1px, transparent 2px);
+  background-size: 160px 160px, 220px 220px, 300px 300px;
+  background-position: 0 0, 40px 60px, 90px 120px;
+  opacity: 0.55;
+  animation: driftStars 28s linear infinite;
+}
+
+.starsLayerSoft {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 2px),
+    radial-gradient(circle, rgba(30, 167, 215, 0.18) 1px, transparent 2px);
+  background-size: 260px 260px, 340px 340px;
+  background-position: 20px 40px, 120px 180px;
+  opacity: 0.7;
+  animation: driftStarsReverse 42s linear infinite;
+}
+
+.orbGlowTop,
+.orbGlowBottom {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(78px);
+  pointer-events: none;
+}
+
+.orbGlowTop {
+  top: -60px;
+  right: -40px;
+  width: 260px;
+  height: 260px;
+  background: rgba(30, 167, 215, 0.18);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.orbGlowBottom {
+  left: -80px;
+  bottom: -90px;
+  width: 280px;
+  height: 280px;
+  background: rgba(18, 92, 131, 0.2);
+  animation: pulseGlow 10s ease-in-out infinite reverse;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(129, 205, 241, 0.24);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(202, 234, 249, 0.82);
+  font-family: "Rethink Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  animation: fadeUpSoft 0.6s ease 0.08s both;
+}
+
+.title {
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-family: "Rethink Sans", sans-serif;
+  font-size: clamp(60px, 11vw, 126px);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 40px rgba(68, 173, 219, 0.12);
+  animation: fadeUpSoft 0.72s ease 0.18s both;
+}
+
+.divider {
+  width: 72px;
+  height: 1px;
+  margin: 0 auto 26px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(174, 224, 247, 0.64) 50%,
+    transparent 100%
+  );
+  animation: fadeUpSoft 0.8s ease 0.26s both;
+}
+
+.copy {
+  max-width: 560px;
+  margin: 0 auto 40px;
+  color: rgba(220, 236, 245, 0.68);
+  font-family: "Rethink Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.84;
+  animation: fadeUpSoft 0.84s ease 0.34s both;
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 42px;
+  animation: fadeUpSoft 0.88s ease 0.42s both;
+}
+
+.unit {
+  min-width: 92px;
+  text-align: center;
+}
+
+.num {
+  display: block;
+  color: #ffffff;
+  font-family: "Rethink Sans", sans-serif;
+  font-size: clamp(38px, 6vw, 66px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 28px rgba(68, 173, 219, 0.14);
+}
+
+.label {
+  display: block;
+  margin-top: 8px;
+  color: rgba(194, 223, 237, 0.48);
+  font-family: "Rethink Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.sep {
+  color: rgba(170, 214, 236, 0.18);
+  font-family: "Rethink Sans", sans-serif;
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  animation: fadeUpSoft 0.92s ease 0.5s both;
+}
+
+.primaryAction,
+.secondaryAction {
+  min-width: 188px;
+  height: 52px;
+  padding: 0 20px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: "Rethink Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease,
+    border-color 0.28s ease,
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+
+.primaryAction::before,
+.secondaryAction::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -76%;
+  width: 52%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.24);
+  transform: skewX(-24deg);
+  transition: left 0.62s ease;
+}
+
+.primaryAction span,
+.secondaryAction span,
+.actionIcon {
+  position: relative;
+  z-index: 1;
+}
+
+.primaryAction {
+  border: 1px solid rgba(109, 200, 240, 0.14);
+  background: linear-gradient(135deg, #1ea7d7 0%, #1484b5 100%);
+  color: #ffffff;
+  box-shadow:
+    0 14px 28px rgba(20, 132, 181, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.secondaryAction {
+  border: 1px solid rgba(146, 214, 245, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e7f5fc;
+  box-shadow:
+    0 12px 24px rgba(3, 18, 28, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.actionIcon {
+  transition: transform 0.3s ease;
+}
+
+.primaryAction:hover,
+.secondaryAction:hover,
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+  transform: translateY(-2px);
+}
+
+.primaryAction:hover::before,
+.secondaryAction:hover::before,
+.primaryAction:focus-visible::before,
+.secondaryAction:focus-visible::before {
+  left: 132%;
+}
+
+.primaryAction:hover,
+.primaryAction:focus-visible {
+  color: #ffffff;
+  box-shadow:
+    0 18px 34px rgba(20, 132, 181, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.secondaryAction:hover,
+.secondaryAction:focus-visible {
+  color: #ffffff;
+  border-color: rgba(146, 214, 245, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 16px 30px rgba(3, 18, 28, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.primaryAction:hover .actionIcon,
+.secondaryAction:hover .actionIcon,
+.primaryAction:focus-visible .actionIcon,
+.secondaryAction:focus-visible .actionIcon {
+  transform: translateX(4px);
+}
+
+@keyframes driftStars {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-160px);
+  }
+}
+
+@keyframes driftStarsReverse {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(120px);
+  }
+}
+
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.82;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starsLayer,
+  .starsLayerSoft,
+  .orbGlowTop,
+  .orbGlowBottom,
+  .eyebrow,
+  .title,
+  .divider,
+  .copy,
+  .countdown,
+  .primaryAction,
+  .secondaryAction,
+  .actionIcon {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .comingSoonSection {
+    padding: 122px 0 58px;
+  }
+
+  .copy {
+    margin-bottom: 34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .comingSoonSection {
+    padding: 106px 0 42px;
+  }
+
+  .eyebrow {
+    margin-bottom: 16px;
+    letter-spacing: 0.18em;
+  }
+
+  .title {
+    font-size: clamp(42px, 15vw, 72px);
+  }
+
+  .copy {
+    font-size: 15px;
+    line-height: 1.74;
+    margin-bottom: 28px;
+  }
+
+  .countdown {
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .unit {
+    min-width: 70px;
+  }
+
+  .num {
+    font-size: clamp(28px, 10vw, 44px);
+  }
+
+  .label {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .sep {
+    font-size: 28px;
+    padding-top: 0;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
+    min-width: 0;
+  }
+}

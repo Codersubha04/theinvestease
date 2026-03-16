@@ -1,11 +1,81 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Facebook,
+  Instagram,
+  Send,
+  Twitter,
+} from "lucide-react";
 
-import { postListItems } from "@/data/blogs";
+import { detailedBlogPosts } from "@/data/blogs";
+import type { DetailedBlogPost } from "@/types/blogs";
 import CommentForm from "./CommentForm";
-import NewsLetterForm from "../common/NewsLetterForm";
 import Comments from "./Comments";
 
-export default function Details1() {
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61587700070114",
+    icon: Facebook,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/investease_research/",
+    icon: Instagram,
+  },
+  {
+    label: "Telegram",
+    href: "https://t.me/InvestEase_Official",
+    icon: Send,
+  },
+  {
+    label: "Twitter/X",
+    href: "https://x.com/the_investease",
+    icon: Twitter,
+  },
+];
+
+export default function Details1({ blog }: { blog: DetailedBlogPost }) {
+  const recommendedPosts = useMemo(
+    () =>
+      detailedBlogPosts.filter((item) => blog.recommendedIds.includes(item.id)),
+    [blog.recommendedIds],
+  );
+
+  const sidebarPosts = useMemo(() => {
+    const remainingPosts = detailedBlogPosts.filter(
+      (item) =>
+        item.id !== blog.id && !recommendedPosts.some((post) => post.id === item.id),
+    );
+
+    return [...recommendedPosts, ...remainingPosts];
+  }, [blog.id, recommendedPosts]);
+
+  const sidebarGroups = useMemo(() => {
+    const groups: DetailedBlogPost[][] = [];
+
+    for (let index = 0; index < sidebarPosts.length; index += 2) {
+      groups.push(sidebarPosts.slice(index, index + 2));
+    }
+
+    if (groups.length > 1 && groups[groups.length - 1].length === 1) {
+      const lastGroup = groups.pop();
+      if (lastGroup?.length) {
+        groups[groups.length - 1] = [...groups[groups.length - 1], ...lastGroup];
+      }
+    }
+
+    return groups;
+  }, [sidebarPosts]);
+
+  const [activeSidebarPage, setActiveSidebarPage] = useState(0);
+
+  useEffect(() => {
+    setActiveSidebarPage(0);
+  }, [blog.id]);
+
+  const activeSidebarPosts = sidebarGroups[activeSidebarPage] ?? sidebarGroups[0] ?? [];
+
   return (
     <div className="tf-container tf-spacing-3">
       <div className="row rg-60">
@@ -13,339 +83,206 @@ export default function Details1() {
           <div className="blog-content blog-details-content mr-50">
             <div className="image-blog">
               <img
-                src={"/image/blog/image-blog-1.jpg"}
-                alt=""
+                src={blog.imgSrc}
+                alt={blog.title}
                 className="lazyload"
                 width={910}
                 height={512}
               />
             </div>
             <div className="desc-blog">
-              <p className="body-2">
-                In today's rapidly changing economic landscape, volatility is
-                the new normal. Markets are affected by global events,
-                technological advancements, and shifting consumer behaviors. For
-                businesses, this means that risks are inevitable—but they can
-                also be managed effectively. The key is to develop a proactive
-                risk management strategy that allows your business to thrive
-                even in uncertain conditions.
-              </p>
-              <p className="body-2">
-                Test your crisis management plan with regular simulations to
-                ensure that your team knows what to do if an emergency arises. A
-                well-prepared team can minimize downtime and protect your
-                reputation.
-              </p>
+              {blog.intro.map((paragraph, index) => (
+                <p className="body-2" key={index}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <div className="cols-img">
-              <div className="image-blog">
-                <img
-                  src="/image/blog/image-blog-2.jpg"
-                  alt=""
-                  className="lazyload"
-                  width={444}
-                  height={334}
-                />
+
+            {blog.keyTakeaways?.length ? (
+              <div className="desc-blog">
+                <h5 className="title-desc">Key Takeaways</h5>
+                <ul className="list-disc body-2">
+                  {blog.keyTakeaways.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
               </div>
-              <div className="image-blog">
-                <img
-                  src="/image/blog/image-blog-3.jpg"
-                  alt=""
-                  className="lazyload"
-                  width={444}
-                  height={334}
-                />
-              </div>
-            </div>
+            ) : null}
+
             <div className="list-desc">
-              <div className="desc-blog">
-                <h5 className="title-desc">
-                  1. Conduct a Comprehensive Risk Assessment
-                </h5>
-                <p className="body-2">
-                  The first step in managing risk is to understand what risks
-                  your business faces. This includes both internal and external
-                  risks such as financial instability, supply chain disruptions,
-                  cybersecurity threats, and market fluctuations. Conduct a
-                  thorough risk assessment to identify and categorize risks
-                  based on their potential impact and likelihood of occurrence.
-                </p>
-              </div>
-              <div className="desc-blog">
-                <h5 className="title-desc">
-                  2. Diversify Your Business Operations
-                </h5>
-                <p className="body-2">
-                  Diversification is one of the most effective ways to mitigate
-                  risk. By expanding your products, services, or markets, you
-                  reduce your dependency on a single source of revenue. In a
-                  volatile market, diversification provides a safety net, as
-                  declines in one area can be offset by growth in another.
-                </p>
-              </div>
-              <div className="desc-blog">
-                <h5 className="title-desc">
-                  3. Build a Strong Financial Buffer
-                </h5>
-                <p className="body-2">
-                  Cash flow is the lifeblood of any business, and during
-                  volatile periods, having a strong financial buffer is
-                  critical. Ensure your business has access to adequate working
-                  capital to cover unforeseen expenses or downturns. This might
-                  mean reducing non-essential spending or setting up an
-                  emergency fund.
-                </p>
-              </div>
+              {blog.sections.map((section, index) => (
+                <div className="desc-blog" key={index}>
+                  <h5 className="title-desc">{section.heading}</h5>
+                  {section.paragraphs.map((paragraph, paragraphIndex) => (
+                    <p className="body-2" key={paragraphIndex}>
+                      {paragraph}
+                    </p>
+                  ))}
+                  {section.bullets?.length ? (
+                    <ul className="list-disc body-2">
+                      {section.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {section.subSections?.length
+                    ? section.subSections.map((subSection) => (
+                        <div className="blog-subsection" key={subSection.title}>
+                          <h6 className="title-sub-desc">{subSection.title}</h6>
+                          {subSection.paragraphs?.map((paragraph, paragraphIndex) => (
+                            <p className="body-2" key={`${subSection.title}-${paragraphIndex}`}>
+                              {paragraph}
+                            </p>
+                          ))}
+                          {subSection.bullets?.length ? (
+                            <ul className="list-disc body-2">
+                              {subSection.bullets.map((bullet, bulletIndex) => (
+                                <li key={`${subSection.title}-${bulletIndex}`}>{bullet}</li>
+                              ))}
+                            </ul>
+                          ) : null}
+                        </div>
+                      ))
+                    : null}
+                </div>
+              ))}
             </div>
-            <div className="desc-blog">
-              <h5 className="title-desc">Conclusion</h5>
-              <p className="body-2">
-                Managing business risks in a volatile market requires a
-                combination of foresight, preparation, and agility. By
-                conducting thorough risk assessments, diversifying your
-                operations, building financial resilience, staying informed, and
-                having a solid crisis management plan, you can navigate
-                uncertainty and turn potential threats into opportunities for
-                growth.
-              </p>
-            </div>
+
             <div className="tab-list">
               <div className="left tab-item">
                 <div className="text">Tag:</div>
                 <div className="tabs-list g-12">
-                  <a href="#" className="tabs-item caption-1">
-                    Finance
-                  </a>
-                  <a href="#" className="tabs-item caption-1">
-                    Consulting
-                  </a>
+                  {blog.tags.map((tag) => (
+                    <span className="tabs-item caption-1" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
               <div className="right tab-item">
                 <div className="text">Share this post:</div>
                 <ul className="tf-social radius-50 style-border g-12 color-on-suface-container">
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-messenger" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-x" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-ig1" />
-                      </div>
-                    </a>
-                  </li>
+                  {socialLinks.map(({ label, href, icon: Icon, iconClass }) => (
+                    <li className="item" key={label}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={label}
+                        title={label}
+                      >
+                        <div className="icon">
+                          {iconClass ? (
+                            <i className={iconClass} style={{ fontSize: "15px", lineHeight: 1 }} />
+                          ) : Icon ? (
+                            <Icon size={16} strokeWidth={2.1} />
+                          ) : null}
+                        </div>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
-            <div className="pre-next-blog">
-              <div className="pre pre-next-blog-item">
-                <a href="#" className="pre-next-btn">
-                  PREVIOUS
-                </a>
-                <h6>
-                  <a href="#" className="name-blog">
-                    Increasing Profit Margins with Efficient
-                    <br />
-                    Business Operations
-                  </a>
-                </h6>
-              </div>
-              <div className="line" />
-              <div className="next pre-next-blog-item">
-                <a href="#" className="pre-next-btn">
-                  NEXT
-                </a>
-                <h6>
-                  <a href="#" className="name-blog">
-                    Navigating Market Trends to Stay
-                    <br />
-                    Competitive
-                  </a>
-                </h6>
+
+            <div className="desc-blog blog-faq-section">
+              <h5 className="title-desc">Frequently Asked Questions (FAQs)</h5>
+              <div className="accordion blog-faq-accordion" id="blogFaqAccordion">
+                {blog.faqs.map((faq, index) => (
+                  <div className="accordion-item" key={faq.question}>
+                    <h2 className="accordion-header">
+                      <button
+                        className={`accordion-button${index === 0 ? "" : " collapsed"}`}
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#blog-faq-${index}`}
+                        aria-expanded={index === 0}
+                        aria-controls={`blog-faq-${index}`}
+                      >
+                        {faq.question}
+                      </button>
+                    </h2>
+                    <div
+                      id={`blog-faq-${index}`}
+                      className={`accordion-collapse collapse${index === 0 ? " show" : ""}`}
+                      data-bs-parent="#blogFaqAccordion"
+                    >
+                      <div className="accordion-body body-2">{faq.answer}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <Comments />
+
+            <Comments comments={blog.comments} />
             <CommentForm />
           </div>
         </div>
+
         <div className="col-xl-3">
           <div className="tf-sidebar">
-            <div className="sidebar-item sidebar-search">
-              <fieldset>
-                <input type="text" placeholder="Search products..." />
-                <a href="#" className="tf-btn-search">
-                  <i className="icon-MagnifyingGlass" />
-                </a>
-              </fieldset>
-            </div>
-            <div className="sidebar-item sidebar-info">
-              <div className="info-top">
-                <div className="image">
-                  <a href="#" className="link" />
-                  <img
-                    src="/image/avatar/avt-1.jpg"
-                    alt=""
-                    className="lazyload"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-                <div className="top-content">
-                  <h5>
-                    <a href="#" className="name">
-                      Tony Nguyen
-                    </a>
-                  </h5>
-                  <div className="number-follower">200 Follower</div>
-                </div>
-              </div>
-              <div className="introduce">
-                Tony Nguyen (@Jessie_ng) is a writer who draws. He’s the
-                Bestselling author of “Number of The Year”.
-              </div>
-              <div className="info-social">
-                <ul className="tf-social radius-50 style-border g-12 color-on-suface-container">
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-messenger" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-x" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-ig1" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-skype" />
-                      </div>
-                    </a>
-                  </li>
-                  <li className="item">
-                    <a href="#">
-                      <div className="icon">
-                        <i className="icon-telegram" />
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="sidebar-item sidebar-content sidebar-categories">
-              <h6 className="title-content">Categories</h6>
-              <ul className="list">
-                <li className="item">
-                  <a href="#">Business Consulting</a>
-                  <p>(112)</p>
-                </li>
-                <li className="item">
-                  <a href="#">Finance Consulting</a>
-                  <p>(32)</p>
-                </li>
-                <li className="item">
-                  <a href="#">Investment Tips</a>
-                  <p>(42)</p>
-                </li>
-                <li className="item">
-                  <a href="#">Tax Solutions</a>
-                  <p>(65)</p>
-                </li>
-                <li className="item">
-                  <a href="#">Risk Management</a>
-                  <p>(13)</p>
-                </li>
-                <li className="item">
-                  <a href="#">Leadership Strategies</a>
-                  <p>(32)</p>
-                </li>
-              </ul>
-            </div>
             <div className="sidebar-item sidebar-content sidebar-recent-posts">
-              <h6 className="title-content">Recent posts</h6>
-              {postListItems.map((post, i) => (
-                <div className="tf-post-list style-small hover-img" key={i}>
-                  <div className="image">
-                    <Link to={`/blog-details-1/${post.id}`} className="link" />
-                    <img
-                      src={post.imgSrc}
-                      alt={post.title}
-                      className="lazyload"
-                      width={post.imgWidth}
-                      height={post.imgHeight}
-                    />
+              <h6 className="title-content">Recommended Articles</h6>
+              <div className="blog-sidebar-page-group">
+                {activeSidebarPosts.map((post, index) => (
+                  <div
+                    className="blog-card-new blog-card-sidebar wow fadeInUp"
+                    data-wow-delay={`${index * 0.08}s`}
+                    style={{ animationDelay: `${index * 0.08}s` }}
+                    key={post.id}
+                  >
+                    <Link
+                      className="blog-img-wrap blog-img-wrap-sidebar"
+                      to={`/blog-details-1/${post.id}`}
+                    >
+                      <img
+                        src={post.imgSrc}
+                        alt={post.title}
+                        className="lazyload"
+                        width={post.imgWidth}
+                        height={post.imgHeight}
+                      />
+                    </Link>
+                    <div className="blog-card-content blog-card-content-sidebar">
+                      <div className="blog-date-pill">
+                        {post.date.month} {post.date.day}, {post.date.year}
+                      </div>
+                      <h6 className="blog-title-new blog-title-sidebar">
+                        <Link to={`/blog-details-1/${post.id}`}>{post.title}</Link>
+                      </h6>
+                    </div>
                   </div>
-                  <div className="post-content">
-                    <div className="post-date caption-1">{post.date}</div>
-                    <a href="#" className="name-post">
-                      {post.title}
-                    </a>
-                  </div>
+                ))}
+              </div>
+              {sidebarGroups.length > 1 ? (
+                <div className="blog-sidebar-pagination">
+                  {sidebarGroups.map((_, index) => (
+                    <button
+                      type="button"
+                      className={`blog-sidebar-page${index === activeSidebarPage ? " active" : ""}`}
+                      key={index}
+                      onClick={() => setActiveSidebarPage(index)}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
                 </div>
-              ))}
+              ) : null}
             </div>
-            <div className="sidebar-item sidebar-content sidebar-newsletter">
-              <h6 className="title-content">Subscribe Newsletter</h6>
-              <NewsLetterForm placeholder="Email address" />
-            </div>
+
             <div className="sidebar-item sidebar-content sidebar-tags">
               <h6 className="title-content">Tags</h6>
               <div className="tabs-list">
-                <a href="#" className="tabs-item caption-1">
-                  Finance
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Growth
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Strategy
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Risk
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Tax
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Investment
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Business
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Market
-                </a>
-                <a href="#" className="tabs-item caption-1">
-                  Consulting
-                </a>
+                {blog.tags.map((tag) => (
+                  <span className="tabs-item caption-1" key={tag}>
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* /.main-content */}
     </div>
   );
 }

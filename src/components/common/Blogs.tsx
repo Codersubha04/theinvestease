@@ -1,6 +1,7 @@
 import "./blogs.scss";
+import { Link } from "react-router-dom";
 
-import { posts } from "@/data/blogs";
+import { latestDetailedBlogPosts } from "@/data/blogs";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -33,7 +34,7 @@ export default function Blogs() {
               dir="ltr"
               className="swiper sw-new sw-layout"
               speed={700}
-              loop={posts.length > 1}
+              loop={latestDetailedBlogPosts.length > 1}
               grabCursor
               autoplay={{
                 delay: 3200,
@@ -58,13 +59,13 @@ export default function Blogs() {
                 el: ".spe1",
               }}
             >
-              {posts.map((post, index) => (
+              {latestDetailedBlogPosts.map((post, index) => (
                 <SwiperSlide key={index}>
                   <div className="blog-card-new wow fadeInUp" data-wow-delay={`${index * 0.08}s`}>
                     {/* Image */}
-                    <span className="blog-img-wrap">
-                      <img src={post.imgSrc} alt="" />
-                    </span>
+                    <Link className="blog-img-wrap" to={`/blog-details-1/${post.id}`}>
+                      <img src={post.imgSrc} alt={post.title} />
+                    </Link>
 
                     {/* Content */}
                     <div className="blog-card-content">
@@ -73,7 +74,7 @@ export default function Blogs() {
                       </div>
 
                       <h4 className="blog-title-new">
-                        <span>{post.title}</span>
+                        <Link to={`/blog-details-1/${post.id}`}>{post.title}</Link>
                       </h4>
                     </div>
                   </div>

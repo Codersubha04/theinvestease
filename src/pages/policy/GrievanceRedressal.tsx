@@ -1,6 +1,15 @@
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Grievance Redressal Mechanism | InvestEase Research Support",
+  description:
+    "Understand the InvestEase Research grievance redressal mechanism, complaint escalation process, and investor support channels for service-related concerns.",
+};
+
 export default function GrievanceRedressalMechanism() {
   return (
     <>
+      <MetaComponent meta={metadata} />
       <div style={{ height: "120px" }} />
 
       <section className="tf-section">

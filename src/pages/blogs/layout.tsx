@@ -2,6 +2,7 @@ import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Topbar1 from "@/components/headers/Topbar1";
 import type React from "react";
+import "@/components/common/blogs.scss";
 
 export default function BlogLayout({
   children,

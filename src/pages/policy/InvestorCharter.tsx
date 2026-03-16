@@ -1,40 +1,51 @@
+import MetaComponent from "@/components/common/MetaComponent";
+import styles from "./refundPolicy.module.scss";
+
+const metadata = {
+  title: "Investor Charter | InvestEase Research Investor Rights",
+  description:
+    "Read the InvestEase Research Investor Charter outlining investor rights, research service commitments, grievance access, and transparency responsibilities.",
+};
+
 export default function InvestorCharter() {
   return (
     <>
-      <div style={{ height: "120px" }} />
-
-      <section className="tf-section">
-        <div className="tf-container mb-5">
-          <div className="text-center mb-5">
-            <h1
-              className="fw-bold mb-3"
-              style={{ color: "#24283E", fontSize: "50px" }}
-            >
-              Investor Charter
-            </h1>
+      <MetaComponent meta={metadata} />
+      <section className={`tf-section ${styles.policySection}`}>
+        <div className="tf-container">
+          <div className={styles.headerBlock}>
+            <h1>Investor Charter</h1>
+            <p>
+              Investor rights, grievance access, service standards, and
+              responsibilities applicable to clients engaging with InvestEase
+              Research.
+            </p>
           </div>
 
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "16px",
-              padding: "50px",
-              boxShadow: "0 15px 50px rgba(0,0,0,0.08)",
-              lineHeight: "30px",
-            }}
-          >
+          <div className={styles.policyList}>
+            <div
+              className={styles.policyItem}
+              style={{ animationDelay: "80ms", opacity: 1, transform: "none" }}
+            >
             {/* A */}
-            <h4 style={{ color: "#24283E", fontWeight: 600 }}>
+            <h4
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
+            >
               A. Vision & Mission Statements for investors
             </h4>
 
-            <p>
+            <p style={{ color: "#50677f", lineHeight: "1.82", fontSize: "17px" }}>
               <strong>Vision:</strong>
               <br />
               Invest with knowledge and safety.
             </p>
 
-            <p>
+            <p style={{ color: "#50677f", lineHeight: "1.82", fontSize: "17px" }}>
               <strong>Mission:</strong>
               <br />
               Every investor should be empowered to invest in suitable
@@ -45,7 +56,13 @@ export default function InvestorCharter() {
 
             {/* B */}
             <h4
-              style={{ color: "#24283E", fontWeight: 600, marginTop: "30px" }}
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                marginTop: "30px",
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
             >
               B. Details of business transacted by the Research Analyst with
               respect to the investors
@@ -65,7 +82,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -73,7 +90,13 @@ export default function InvestorCharter() {
 
             {/* C */}
             <h4
-              style={{ color: "#24283E", fontWeight: 600, marginTop: "30px" }}
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                marginTop: "30px",
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
             >
               C. Details of services provided to investors (No Indicative
               Timelines)
@@ -81,7 +104,7 @@ export default function InvestorCharter() {
 
             <ul style={{ listStyle: "none", paddingLeft: 0 }}>
               <li style={{ display: "flex", gap: "10px" }}>
-                <span>●</span>
+                <span className={styles.charterMainBullet}>●</span>
                 <span>
                   <strong>Onboarding of Clients:</strong>
                 </span>
@@ -100,14 +123,14 @@ export default function InvestorCharter() {
                       marginBottom: "6px",
                     }}
                   >
-                    <span>○</span>
+                    <span className={styles.charterSubBullet}>○</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
               <li style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
-                <span>●</span>
+                <span className={styles.charterMainBullet}>●</span>
                 <span>
                   <strong>Disclosure to Clients:</strong>
                 </span>
@@ -129,7 +152,7 @@ export default function InvestorCharter() {
                       marginBottom: "6px",
                     }}
                   >
-                    <span>○</span>
+                    <span className={styles.charterSubBullet}>○</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -149,7 +172,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -157,7 +180,13 @@ export default function InvestorCharter() {
 
             {/* D */}
             <h4
-              style={{ color: "#24283E", fontWeight: 600, marginTop: "30px" }}
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                marginTop: "30px",
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
             >
               D. Details of grievance redressal mechanism and how to access it
             </h4>
@@ -200,7 +229,7 @@ export default function InvestorCharter() {
                   marginBottom: "10px",
                 }}
               >
-                <span style={{ marginTop: "4px" }}>●</span>
+                <span className={styles.charterMainBullet}>●</span>
                 <span>
                   SCORES 2.0 (a web based centralized grievance redressal system
                   of SEBI for facilitating effective grievance redressal in
@@ -232,7 +261,7 @@ export default function InvestorCharter() {
                   marginBottom: "10px",
                 }}
               >
-                <span style={{ marginTop: "4px" }}>●</span>
+                <span className={styles.charterMainBullet}>●</span>
                 <span>
                   Two level review for complaint/grievance against Research
                   Analyst:
@@ -255,7 +284,7 @@ export default function InvestorCharter() {
                   marginBottom: "6px",
                 }}
               >
-                <span style={{ marginTop: "4px" }}>○</span>
+                <span className={styles.charterSubBullet}>○</span>
                 <span>First review done by designated body (RAASB)</span>
               </li>
               <li
@@ -265,7 +294,7 @@ export default function InvestorCharter() {
                   gap: "10px",
                 }}
               >
-                <span style={{ marginTop: "4px" }}>○</span>
+                <span className={styles.charterSubBullet}>○</span>
                 <span>Second review done by SEBI</span>
               </li>
             </ul>
@@ -278,7 +307,7 @@ export default function InvestorCharter() {
                   gap: "10px",
                 }}
               >
-                <span style={{ marginTop: "4px" }}>●</span>
+                <span className={styles.charterMainBullet}>●</span>
                 <span>Email to designated email ID of RAASB</span>
               </li>
             </ul>
@@ -302,7 +331,13 @@ export default function InvestorCharter() {
             </p>
 
             <h4
-              style={{ color: "#24283E", fontWeight: 600, marginTop: "30px" }}
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                marginTop: "30px",
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
             >
               E. Rights of investors
             </h4>
@@ -321,7 +356,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -336,7 +371,7 @@ export default function InvestorCharter() {
               }}
             >
               <li style={{ display: "flex", gap: "10px" }}>
-                <span>○</span>
+                <span className={styles.charterSubBullet}>○</span>
                 <span>
                   Right to receive information about all the statutory and
                   regulatory disclosures
@@ -359,7 +394,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -374,7 +409,7 @@ export default function InvestorCharter() {
               }}
             >
               <li style={{ display: "flex", gap: "10px" }}>
-                <span>○</span>
+                <span className={styles.charterSubBullet}>○</span>
                 <span>
                   Right to get access to services in a suitable manner even if
                   differently abled
@@ -391,7 +426,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -399,7 +434,13 @@ export default function InvestorCharter() {
 
             {/* F */}
             <h4
-              style={{ color: "#24283E", fontWeight: 600, marginTop: "30px" }}
+              style={{
+                color: "#142236",
+                fontWeight: 700,
+                marginTop: "30px",
+                fontFamily: '"Rethink Sans", sans-serif',
+                fontSize: "clamp(1.62rem, 2.05vw, 2rem)",
+              }}
             >
               F. Expectations from the investors (Responsibilities of investors)
             </h4>
@@ -418,7 +459,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -460,7 +501,7 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -481,11 +522,12 @@ export default function InvestorCharter() {
                   key={i}
                   style={{ display: "flex", gap: "10px", marginBottom: "8px" }}
                 >
-                  <span>●</span>
+                  <span className={styles.charterMainBullet}>●</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         </div>
       </section>

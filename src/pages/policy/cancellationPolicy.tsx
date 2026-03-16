@@ -1,8 +1,16 @@
 import styles from "./cancellationPolicy.module.scss";
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Cancellation Policy | InvestEase Research Service Terms",
+  description:
+    "Read the InvestEase Research Cancellation Policy to understand how research service discontinuation, billing treatment, and subscription cancellations are handled.",
+};
 
 export default function CancellationPolicy() {
   return (
     <>
+      <MetaComponent meta={metadata} />
       <section className={`tf-section ${styles.policySection}`}>
         <div className="tf-container">
           <div className={styles.headerBlock}>
@@ -15,7 +23,9 @@ export default function CancellationPolicy() {
 
           <ol className={styles.policyList}>
             <li className={styles.policyItem} style={{ animationDelay: "80ms" }}>
-              <h4>Service Cancellation by Client</h4>
+              <div className={styles.itemTop}>
+                <h4>Service Cancellation by Client</h4>
+              </div>
               <p>
                 Clients may request cancellation of their subscribed research
                 service at any time by submitting a written request through the
@@ -26,7 +36,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "150ms" }}>
-              <h4>Effect of Cancellation</h4>
+              <div className={styles.itemTop}>
+                <h4>Effect of Cancellation</h4>
+              </div>
               <p>Upon cancellation:</p>
               <ul className={styles.subList}>
                 {[
@@ -39,7 +51,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "220ms" }}>
-              <h4>Non-Refundable Fees</h4>
+              <div className={styles.itemTop}>
+                <h4>Non-Refundable Fees</h4>
+              </div>
               <p>
                 All fees paid for research services are non-refundable upon
                 cancellation, irrespective of the reason for such cancellation.
@@ -47,7 +61,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "290ms" }}>
-              <h4>Cancellation of Training Programs</h4>
+              <div className={styles.itemTop}>
+                <h4>Cancellation of Training Programs</h4>
+              </div>
               <p>
                 Enrollment in training, workshops, webinars, or educational
                 programs is non-cancellable once confirmed, and the fees paid
@@ -56,7 +72,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "360ms" }}>
-              <h4>Cancellation by InvestEase Research</h4>
+              <div className={styles.itemTop}>
+                <h4>Cancellation by InvestEase Research</h4>
+              </div>
               <p>
                 InvestEase Research reserves the right to cancel or suspend
                 services if:
@@ -74,7 +92,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "430ms" }}>
-              <h4>Regulatory Compliance</h4>
+              <div className={styles.itemTop}>
+                <h4>Regulatory Compliance</h4>
+              </div>
               <p>
                 All cancellations shall be handled in compliance with SEBI
                 (Research Analyst) Regulations, 2014 and related guidelines.
@@ -82,7 +102,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "500ms" }}>
-              <h4>Policy Updates</h4>
+              <div className={styles.itemTop}>
+                <h4>Policy Updates</h4>
+              </div>
               <p>
                 We may update this cancellation policy from time to time. Any
                 changes to this policy will be reflected on our website. We
@@ -92,7 +114,9 @@ export default function CancellationPolicy() {
             </li>
 
             <li className={styles.policyItem} style={{ animationDelay: "570ms" }}>
-              <h4>Agreement</h4>
+              <div className={styles.itemTop}>
+                <h4>Agreement</h4>
+              </div>
               <p>
                 By availing any service from InvestEase Research, the client
                 confirms acceptance of this Cancellation Policy. We believe that

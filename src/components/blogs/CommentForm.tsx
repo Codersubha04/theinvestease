@@ -1,3 +1,5 @@
+import { Send } from "lucide-react";
+
 export default function CommentForm() {
   return (
     <form
@@ -25,9 +27,12 @@ export default function CommentForm() {
         </label>
       </fieldset>
       <div className="bottom-btn">
-        <button type="submit" className="tf-btn style-1 bg-on-suface-container">
-          <span>Submit Review </span>
-          <i className="icon-arrow-right-2" />
+        <button
+          type="submit"
+          className="blog-submit-btn"
+        >
+          <span>Post Comment</span>
+          <Send size={18} className="btn-icon" />
         </button>
       </div>
     </form>

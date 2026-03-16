@@ -144,10 +144,10 @@ export default function MobileMenu() {
             {/* Blogs */}
             <li
               className={`menu-item ${
-                pathname.startsWith("/blogs") ? "current-menu-mobile-item" : ""
+                pathname.startsWith("/blog") ? "current-menu-mobile-item" : ""
               }`}
             >
-              <Link to="/">Blogs</Link>
+              <Link to="/blog">Blogs</Link>
             </li>
             {/* More */}
             <li

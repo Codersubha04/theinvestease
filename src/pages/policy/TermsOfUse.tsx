@@ -1,3 +1,11 @@
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Terms of Use | InvestEase Research Website Terms",
+  description:
+    "Read the InvestEase Research Terms of Use covering website access, permitted usage, legal responsibilities, and service-related conditions for users.",
+};
+
 export default function TermsOfUse() {
   const sectionGap = { marginBottom: "34px" };
   const p = { marginBottom: "14px", lineHeight: "30px" };
@@ -5,6 +13,7 @@ export default function TermsOfUse() {
 
   return (
     <>
+      <MetaComponent meta={metadata} />
       <div style={{ height: "120px" }} />
 
       <section className="tf-section">

@@ -60,10 +60,10 @@ export default function Nav() {
 
       <li
         className={`menu-item ${
-          pathname.startsWith("/blogs") ? "current-menu-item" : ""
+          pathname.startsWith("/blog") ? "current-menu-item" : ""
         }`}
       >
-        <Link to="/" className="item-link">
+        <Link to="/blog" className="item-link">
           Blogs
         </Link>
       </li>

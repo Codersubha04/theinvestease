@@ -1,6 +1,15 @@
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Disclosures | InvestEase Research Regulatory Information",
+  description:
+    "View InvestEase Research disclosures including regulatory details, service-related information, conflict disclosures, and important investor-facing compliance statements.",
+};
+
 export default function Disclosures() {
   return (
     <>
+      <MetaComponent meta={metadata} />
       <div style={{ height: "120px" }} />
 
       <section className="tf-section">

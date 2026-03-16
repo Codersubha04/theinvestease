@@ -76,6 +76,7 @@
   padding: 0;
   list-style: none;
   max-width: 100%;
+  border-radius: 20px;
   border: 1px solid rgba(20, 132, 181, 0.1);
   border-top: 0;
   border-radius: 0 0 24px 24px;
@@ -127,6 +128,61 @@
 
 .policyItem p + p {
   margin-top: 12px;
+}
+
+.policyItem ul li > span:first-child {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  font-size: 0;
+  line-height: 0;
+  background: linear-gradient(135deg, #1ea7d7 0%, #1484b5 100%);
+  box-shadow: 0 0 0 3px rgba(30, 167, 215, 0.14);
+}
+
+.policyItem ul ul li > span:first-child {
+  width: 7px;
+  height: 7px;
+  margin-top: 12px;
+  background: #7da4bf !important;
+  box-shadow: 0 0 0 2px rgba(125, 164, 191, 0.12) !important;
+}
+
+.charterMainBullet {
+  flex: 0 0 auto;
+  display: inline-block;
+  overflow: hidden;
+  width: 12px;
+  height: 12px;
+  margin-top: 9px;
+  border-radius: 50%;
+  text-indent: -9999px;
+  white-space: nowrap;
+  font-size: 0;
+  line-height: 0;
+  background: linear-gradient(135deg, #1496c8 0%, #0f6f98 100%) !important;
+  border: 0 !important;
+  box-shadow: 0 0 0 3px rgba(30, 167, 215, 0.18) !important;
+}
+
+.charterSubBullet {
+  flex: 0 0 auto;
+  display: inline-block;
+  overflow: hidden;
+  width: 8px;
+  height: 8px;
+  margin-top: 11px;
+  border-radius: 50%;
+  text-indent: -9999px;
+  white-space: nowrap;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  background: transparent !important;
+  border: 2px solid rgba(20, 132, 181, 0.62) !important;
+  box-shadow: none !important;
 }
 
 .subList {
@@ -272,7 +328,7 @@
 
   .headerBlock {
     padding: 18px 13px;
-    border-radius: 14px 14px 0 0;
+    border-radius: 14px;
   }
 
   .headerBlock h1 {

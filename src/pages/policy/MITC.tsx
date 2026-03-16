@@ -1,3 +1,11 @@
+import MetaComponent from "@/components/common/MetaComponent";
+
+const metadata = {
+  title: "Most Important Terms & Conditions | InvestEase Research",
+  description:
+    "Read the most important terms and conditions for InvestEase Research services, including service scope, investor responsibilities, and key policy terms.",
+};
+
 export default function TermsConditions() {
   const ul = {
     listStyle: "none",
@@ -27,6 +35,7 @@ export default function TermsConditions() {
 
   return (
     <>
+      <MetaComponent meta={metadata} />
       <div style={{ height: "120px" }} />
 
       <section className="tf-section">

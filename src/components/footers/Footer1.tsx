@@ -154,6 +154,9 @@ export default function Footer1({ parentClass = "footer" }) {
                         <Link to={`/`}>Services</Link>
                       </li>
                       <li className="support-item-footer caption-1">
+                        <Link to={`/blog`}>Blog</Link>
+                      </li>
+                      <li className="support-item-footer caption-1">
                         <Link to={`/`}>
                           Investor Education
                         </Link>

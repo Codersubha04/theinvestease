@@ -11,14 +11,37 @@ type MetaProps = {
 
 export default function MetaComponent({ meta }: MetaProps) {
   useEffect(() => {
-    const updateMeta = async () => {
-      document.title = meta.title;
-    };
-    updateMeta();
+    const previousTitle = document.title;
+    const descriptionSelector = 'meta[name="description"]';
+    let descriptionTag = document.querySelector(
+      descriptionSelector,
+    ) as HTMLMetaElement | null;
+    const previousDescription = descriptionTag?.getAttribute("content") ?? "";
+
+    document.title = meta.title;
+
+    if (meta.description) {
+      if (!descriptionTag) {
+        descriptionTag = document.createElement("meta");
+        descriptionTag.setAttribute("name", "description");
+        document.head.appendChild(descriptionTag);
+      }
+
+      descriptionTag.setAttribute("content", meta.description);
+    }
+
     return () => {
-      document.title = "Onsus - Multipurpose Reactjs eCommerce Template";
+      document.title = previousTitle || "Onsus - Multipurpose Reactjs eCommerce Template";
+
+      if (descriptionTag) {
+        if (previousDescription) {
+          descriptionTag.setAttribute("content", previousDescription);
+        } else if (meta.description) {
+          descriptionTag.remove();
+        }
+      }
     };
-  }, []);
+  }, [meta.description, meta.title]);
   return (
     // <HelmetProvider>
     //   <Helmet>

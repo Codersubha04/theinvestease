@@ -101,7 +101,6 @@ const IndustriesPage = lazy(() => import("./pages/other-pages/industries"));
 const PricingPage = lazy(() => import("./pages/other-pages/pricing"));
 const TestimonialsPage = lazy(() => import("./pages/other-pages/testimonials"));
 const GalleryPage = lazy(() => import("./pages/other-pages/gallery"));
-const FaqPage = lazy(() => import("./pages/other-pages/faq"));
 const CareerPage = lazy(() => import("./pages/other-pages/career"));
 const ContactPage = lazy(() => import("./pages/other-pages/contact-us"));
 const OtherPagesLayout = lazy(() => import("./pages/other-pages/layout"));
@@ -122,7 +121,6 @@ const DisclosuresPage = lazy(() => import("./pages/policy/Disclosures"));
 const GrievanceRedressalPage = lazy(
   () => import("./pages/policy/GrievanceRedressal"),
 );
-const ComplaintsDataPage = lazy(() => import("./pages/policy/ComplaintsData"));
 const LegalDisclaimerPage = lazy(
   () => import("./pages/policy/LegalDisclaimer"),
 );
@@ -143,14 +141,21 @@ const BlogRightSidebarPage = lazy(
   () => import("./pages/blogs/blog-right-sidebar"),
 );
 const BlogNoSidebarPage = lazy(() => import("./pages/blogs/blog-no-sidebar"));
-const BlogLeftSidebarPage = lazy(
-  () => import("./pages/blogs/blog-left-sidebar"),
-);
-const BlogDetailsPage1 = lazy(() => import("./pages/blogs/blog-details-1"));
-const BlogDetailsPage2 = lazy(() => import("./pages/blogs/blog-details-2"));
-const BlogLayout = lazy(() => import("./pages/blogs/layout"));
+  const BlogLeftSidebarPage = lazy(
+    () => import("./pages/blogs/blog-left-sidebar"),
+  );
+  const BlogPage = lazy(() => import("./pages/blogs"));
+  const BlogDetailsPage1 = lazy(() => import("./pages/blogs/blog-details-1"));
+  const BlogDetailsPage2 = lazy(() => import("./pages/blogs/blog-details-2"));
+  const BlogLayout = lazy(() => import("./pages/blogs/layout"));
 
 function App() {
+  const comingSoonWithLayout = (
+    <OtherPagesLayout>
+      <CommingSoonPage />
+    </OtherPagesLayout>
+  );
+
   return (
     <>
       <Suspense
@@ -348,14 +353,7 @@ function App() {
                     </OtherPagesLayout>
                   }
                 />
-                <Route
-                  path="faq"
-                  element={
-                    <OtherPagesLayout>
-                      <FaqPage />
-                    </OtherPagesLayout>
-                  }
-                />
+                <Route path="faq" element={comingSoonWithLayout} />
                 <Route
                   path="career"
                   element={
@@ -444,14 +442,7 @@ function App() {
                   }
                 />
 
-                <Route
-                  path="complaints-data"
-                  element={
-                    <OtherPagesLayout>
-                      <ComplaintsDataPage />
-                    </OtherPagesLayout>
-                  }
-                />
+                <Route path="complaints-data" element={comingSoonWithLayout} />
                 <Route
                   path="legal-disclaimer"
                   element={
@@ -493,7 +484,7 @@ function App() {
                     </OtherPagesLayout>
                   } />
 
-                <Route path="coming-soon" element={<CommingSoonPage />} />
+                <Route path="coming-soon" element={comingSoonWithLayout} />
                 <Route path="404" element={<NotFoundPage />} />
 
                 <Route
@@ -530,6 +521,26 @@ function App() {
                   }
                 />
 
+                <Route
+                  path="services/stock-basket"
+                  element={comingSoonWithLayout}
+                />
+                <Route
+                  path="services/swing-trading"
+                  element={comingSoonWithLayout}
+                />
+                <Route
+                  path="investease-school"
+                  element={comingSoonWithLayout}
+                />
+                <Route
+                  path="blog"
+                  element={
+                    <BlogLayout>
+                      <BlogPage />
+                    </BlogLayout>
+                  }
+                />
                 <Route
                   path="blog-right-sidebar"
                   element={
